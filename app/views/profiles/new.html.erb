@@ -1,0 +1,96 @@
+
+<!-- ==============================================
+HEADER
+=============================================== -->
+<section id="single-header" class="color-bg light-typo padding-top-bottom">
+
+	<div class="container center">
+		
+		<h1 class="section-title">Create your public profile</h1>
+											
+	</div><!-- End container -->
+	
+</section>
+
+    <section class="grey" id="step1">
+	    <div class="container page">
+	      <div class="row marg-top-40">			
+
+		      <div class="col-sm-6 col-sm-offset-3" id="contact-form">
+            <%= form_for @profile, :html => {:multipart => true, :role => "form"} do |f| %>
+                
+              <% if @profile.errors.any? %>
+                <div id="error_explanation">
+                  <h4>Please resolve the following so that we can create your profile, thanks!</h4>
+                  <ul>
+                    <% @profile.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <p id="notice"><%= notice %></p>
+
+              <div class="row">
+                <div class="col-md-12">
+                
+                  <% if current_user.role == "ehdmin" %>
+	                  <div class="form-group">
+                			<%= f.label "Claimed" %>
+		                  <%= f.select :claimed, [ ['Yes', 'true'], ['No', 'false'] ], {}, { :class => "form-control" } %>
+                    </div>
+                  <% end %>
+
+	                <div class="form-group">
+              			<%= f.label "Picture*" %>
+							      <div class="controls">
+                      <%= f.file_field :image, :class => "form-control requiredField label_better", :accept => 'image/png,image/jpeg', 'data-error-empty' => "Required" %>
+                    <span class="help-block">A picture of the person doing the cleaning is required</span>
+                    </div>
+                  </div>
+                  
+	                <div class="form-group">
+              			<%= f.label "About*" %>
+							      <div class="controls">
+                      <%= f.text_area :about, :rows => 5, :class => "form-control requiredField label_better", :placeholder => "Short description of you and your service (Required)", 'data-error-empty' => "Required" %>
+                      <span class="help-block">Do NOT include any contact information such as phone #, email or website. Clients will contact you through our contact form.</span>
+                    </div>
+                  </div>
+                    
+	                <div class="form-group">
+              			<%= f.label "City*" %>
+							      <div class="controls">
+		                  <%= f.select :city_id, options_from_collection_for_select(@cities, '_id', 'pretty_name', (@profile.city.id if @profile.city)), {:prompt => "City (Required)"}, { :class => "form-control requiredField label_better", 'data-error-empty' => "Required" } %>
+                    </div>
+                  </div>
+
+	                <div class="form-group">
+              			<%= f.label "Specific location or neighbourhoods (Optional)" %>
+							      <div class="controls">
+                      <%= f.text_field :neighbourhoods, :class => "form-control label_better", :placeholder => "Specific location or neighbourhoods" %>
+                    </div>
+                  </div>
+                  
+                  <%= f.hidden_field :name, :value => current_user.first_name %>
+                      
+                  <div class="profile-buttons">
+		                <%= f.submit "Save Profile", :class => "btn btn-qubico btn-block", 'data-error-message' => "Error!", 'data-sending-message' => "Sending...", 'data-ok-message' => "Booking Request Created" %>
+                  </div>
+
+                  <div class="form-group">
+              			<%= f.label "* Required Field", :class => "input-label" %>
+                  </div>
+
+                </div>  
+              </div>
+
+            <% end %>
+      		  
+		      </div>
+	      </div>
+	    </div>
+    </section>
+
+	</div>
+</header>

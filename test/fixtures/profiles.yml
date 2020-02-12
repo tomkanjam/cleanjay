@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  a1rate: 1
+  a2rate: 1
+  a3rate: 1
+  h1rate: 1
+  h2rate: 1
+  h3rate: 1
+
+two:
+  name: MyString
+  description: MyText
+  a1rate: 1
+  a2rate: 1
+  a3rate: 1
+  h1rate: 1
+  h2rate: 1
+  h3rate: 1

@@ -1,0 +1,73 @@
+<%= render :partial => "nav" %>	
+<div class="container">
+	<div class="row marg-top-40">
+		
+		<div class="col-md-9" id="">
+		
+      <% if @jobs.count > 0 %>
+      
+        <% @jobs.each do |job| %>
+          
+            <div class="row booking-panel">
+              <div class="col-md-11">
+                <div class="row">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="col-md-4">
+                        <a href="https://maps.google.com/maps?q=<%= job.postal_code %>">
+			                  <img width="100%" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= job.postal_code %>&zoom=13&size=227x200&sensor=false&markers=markerStyles|<%= job.postal_code %>" />
+			                  </a>
+                      </div>
+                      <div class="col-md-5">
+                          <h4><%= job.date.strftime("%A, %B %-d") %>, <%= job.time %></h4>
+                          <span>Home type:</span> <%= job.building_type.split.map(&:capitalize).join(' ') if job.building_type %><br />
+                          <pan>Bedrooms:</span> <%= job.bedrooms %><br />
+                          <span>Bathrooms:</span> <%= job.bathrooms %><br />
+                          <span>Cleaning type:</span> <%= job.cleaning_type.split.map(&:capitalize).join(' ') if job.cleaning_type %><br />
+                          <span>Extras:</span> <%= "Fridge" if job.fridge %> <%= "Oven" if job.oven %> <%= "Cabinets" if job.cabinets %> <%= "Interior windows" if job.windows %> <%= "Walls" if job.walls %><br />
+                          <pan>Postal code:</span> <%= job.postal_code %><br />
+                          <pan>Square footage:</span> <%= job.square_footage %><br />
+                          <pan>Email:</span> <%= job.email %><br />
+                          <pan>Details:</span> <%= job.details %><br />
+                        </a>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <!--
+                          <div class="col-md-12">
+                              <p>
+                                <% case job.status %> 
+                                <% when "pending" %> 
+	                                <h3><span class="label label-warning">Pending</span></h3>
+                                <% when "confirmed" %> 
+	                                <h3><span class="label label-success">Confirmed</span></h3>
+                                <% when "cancelled" %> 
+	                                <h3><span class="label label-default">Cancelled</span></h3>
+                                <% end %> 
+                              </p>
+                          </div>
+                          -->
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                              <%= job.offers.count %>
+                                                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                    
+        <% end %>
+      <% else %>
+        <h4>No bookings</h4>
+        <!--<h4>We're working on gettings some more bookings for you...</h4>-->
+      <% end %>
+		          
+	  </div>
+		  
+  </div>
+</div>

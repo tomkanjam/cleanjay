@@ -1,0 +1,9 @@
+<p id="<%= 'dash-overview-notice' if notice %>"><%= notice %></p>
+
+<div class="row">
+    
+  <div class="span12 " id="dashboard-main">
+    <%= current_user.profiles.count == 0 ? (render :partial => "create_profile") : (render :partial => "overview") %>
+  </div>
+
+</div>

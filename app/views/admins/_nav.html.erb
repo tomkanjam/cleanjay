@@ -1,0 +1,30 @@
+<div class="container" id="ehdmin-nav">
+	<div class="row marg-top-40">
+		<div class="col-md-12" id="">
+    
+      <ul class="nav nav-pills">
+        <% if current_user.role == "ehdmin" %>
+          <li class=" <%= "active" if request.fullpath == "/ehdmin/home" %>">
+            <a href="/ehdmin/home">Home</a>
+          </li>
+          <li class=" <%= "active" if request.fullpath == "/ehdmin/cities" %>">
+            <a href="/ehdmin/cities">Cities</a>
+          </li>
+          <li class=" <%= "active" if request.fullpath == "/ehdmin/bookings" %>">
+            <a href="/ehdmin/bookings">Bookings</a>
+          </li>
+          <li class=" <%= "active" if request.fullpath == "/ehdmin/posts" %>">
+            <a href="/ehdmin/posts">Blog</a>
+          </li>
+          <li class=" <%= "active" if request.fullpath == "/ehdmin/posts" %>">
+            <a href="/ehdmin/edit_user/all">Users</a>
+          </li>
+        <% end %>
+        <li class=" <%= "active" if request.fullpath == "/ehdmin/profiles" %>">
+          <a href="/ehdmin/profiles">Profiles</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

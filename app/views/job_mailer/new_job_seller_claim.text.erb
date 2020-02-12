@@ -1,0 +1,30 @@
+Hello <%= @cleaner_name %>, you have received a booking request through the CleanJay service marketplace.
+
+This is a real booking request which can be confirmed by claiming your CleanJay profile using this link:
+
+<%= @claim_url %>
+
+
+Here are the booking details:
+
+Number of hours booked: <%= @hours %>
+Date: <%= @date %>
+Postal code: <%= @postal_code %>
+Extras: <%= @extras == "" ? "None" : @extras %>
+Additional details: <%= @details %>
+
+Please use the below link to see the full details of the booking.
+
+<%= @claim_url %>
+
+
+
+P.S. Yes, this is an automated email BUT please don't hesitate to reply to this email if you have any questions or feedback!
+
+
+
+Happy Cleaning,
+
+Tom Kaniuch | Founder
+CleanJay.ca | http://www.cleanjay.ca
+1 (888) 778-3035 ext. 701 (Toll-Free)

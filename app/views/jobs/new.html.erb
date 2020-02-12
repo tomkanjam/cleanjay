@@ -1,0 +1,175 @@
+
+
+<div class="container">
+	<div class="row marg-top-40">
+	
+		<div class="col-md-6 col-md-offset-3" id="">
+	    <div class="row">		  
+	    
+		    <div class="col-md-7" id="">
+			    <div class="title"><h2 class="h-light">Create Booking</h2></div>
+			  </div>
+			  <!--
+		    <div class="col-md-5 right" id="">
+			    <p class="already-member"><a href="/login" class="">Already a member?</a></p>
+			  </div>
+			  -->
+		  </div>
+	  </div>
+			
+
+		<div class="col-md-6 col-md-offset-3" id="">
+		  <%= form_for(@job) do |f| %>
+		  		
+			  <div class="panel panel-default">
+				  <div class="panel-body">
+		      
+					  <% if @job.errors.any? %>
+						  <div id="error_explanation">
+							  <div class="alert alert-danger"><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</div>
+
+							  <ul>
+							  <% @job.errors.full_messages.each do |msg| %>
+								  <li><%= msg %></li>
+							  <% end %>
+							  </ul>
+						  </div>
+					  <% end %>
+
+	        	<div class="form-group">
+						  <label>When would you like to schedule the cleaning for?</label>
+						  <div class="row">
+							  <div class="col-md-7" id="">
+							    <div class="input-group">
+							      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <%= f.text_field :date, :id => "datepicker", :class => "form-control" %>
+                  </div>
+							  </div>
+							  <div class="col-md-5" id="">
+								  <select id="job_time" name="job[time]" class="form-control">
+									  <option value="Anytime">Anytime</option>
+									  <option value="Morning">Morning</option>
+									  <option value="Afternoon">Afternoon</option>
+									  <option value="Evening">Evening</option>
+									  <option value="Late Night">Late Night</option>
+									  <option value="6:00am">6:00am</option>
+									  <option value="6:30am">6:30am</option>
+									  <option value="7:00am">7:00am</option>
+									  <option value="7:30am">7:30am</option>
+									  <option value="8:00am">8:00am</option>
+									  <option value="8:30am">8:30am</option>
+									  <option value="9:00am">9:00am</option>
+									  <option value="9:30am">9:30am</option>
+									  <option value="10:00am">10:00am</option>
+									  <option value="10:30am">10:30am</option>
+									  <option value="11:00am">11:00am</option>
+									  <option value="11:30am">11:30am</option>
+									  <option value="12:00pm">12:00pm</option>
+									  <option value="12:30pm">12:30pm</option>
+									  <option value="1:00pm">1:00pm</option>
+									  <option value="1:30pm">1:30pm</option>
+									  <option value="2:00pm">2:00pm</option>
+									  <option value="2:30pm">2:30pm</option>
+									  <option value="3:00pm">3:00pm</option>
+									  <option value="3:30pm">3:30pm</option>
+									  <option value="4:00pm">4:00pm</option>
+									  <option value="4:30pm">4:30pm</option>
+									  <option value="5:00pm">5:00pm</option>
+									  <option value="5:30pm">5:30pm</option>
+									  <option value="6:00pm">6:00pm</option>
+									  <option value="6:30pm">6:30pm</option>
+									  <option value="7:00pm">7:00pm</option>
+								  </select>
+							  </div>
+						  </div>
+					  </div>
+
+	        	<div class="form-group">
+						  <label>Please specify cleaning priorities and provide any additional instructions you may have.</label>
+						  <%= f.text_area :details, :rows => 5, :class => "job-details form-control" %>
+					  </div>
+
+	        	<div class="form-group">
+						  <label>What’s the cleaning address?</label>
+						  <div class="row">
+							  <div class="col-md-8" id="">
+						  <%= f.text_field :address, :class => "form-control", :placeholder => "Street Address" %>
+							  </div> 
+							  <div class="col-md-4" id="">
+								  <%= f.text_field :apartment, :class => "form-control", :placeholder => "Apt." %>
+							  </div> 
+						  </div> 
+	        	<div class="form-group">
+	        	
+					  </div> 
+						  <div class="row">
+							  <div class="col-md-8" id="">
+						      <%= f.text_field :city, :class => "form-control", :placeholder => "City" %>
+							  </div> 
+							  <div class="col-md-4" id="">
+								  <%= f.text_field :postal_code, :class => "form-control", :placeholder => "Postal code" %>
+							  </div> 
+						  </div> 
+					  </div>
+
+            <div class="form-group">
+						  <label>Name</label>
+						  <%= f.text_field :name, :class => "form-control", :placeholder => "Full name" %>
+					  </div>
+	        	<div class="form-group">
+						  <label>Phone</label>
+						  <%= f.text_field :phone, :class => "form-control", :placeholder => "Phone Number" %>
+					  </div>
+					  
+          	<div class="form-group">
+					    <label>Email</label>
+					    <%= f.email_field :email, :class => "form-control", :placeholder => "Email Address" %>
+				    </div>
+
+					  <div class="actions">
+						  <%= f.submit "Create Booking & Review", :class => "btn btn-default" %>
+					  </div>
+					  
+					  <%= f.hidden_field :profile_id, value: @profile_id %>
+					  <%= f.hidden_field :hours, value: @hours %>
+					  <%= f.hidden_field :rate, value: @rate %>
+					  
+				  </div>
+			  </div>
+			  
+        <!--
+			  <div class="panel panel-default marg-top-20">
+				  <div class="panel-body">
+				    
+	        	<div class="form-group">
+						  <label>Name</label>
+						  <%= f.text_field :name, :class => "form-control", :placeholder => "Full name" %>
+					  </div>
+	        	<div class="form-group">
+						  <label>Phone</label>
+						  <%= f.text_field :phone, :class => "form-control", :placeholder => "Phone Number" %>
+					  </div>
+					  
+					  <%= f.fields_for :user do |u| %>
+	          	<div class="form-group">
+						    <label>Email</label>
+						    <%= u.text_field :email, :class => "form-control", :placeholder => "Email Address" %>
+					    </div>
+	          	<div class="form-group">
+						    <label>New Password</label>
+							  <%= u.password_field :password, { :class => "form-control", :placeholder => "Create New Password" } %>
+					    </div>
+		        <% end %>
+
+					  <div class="actions">
+						  <%= f.submit "Create Booking & Review", :class => "btn btn-default" %>
+					  </div>
+					  
+				  </div>
+			  </div>
+			  -->
+  		<% end %>
+		</div>
+	</div>
+</div>
+

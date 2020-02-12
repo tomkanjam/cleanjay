@@ -1,0 +1,84 @@
+<%= form_for @profile, :html => {:multipart => true, :role => "form"} do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+    
+      <% if @profile.errors.any? %>
+        <div id="error_explanation">
+          <h3>Please resolve the following so that we can create your profile, thanks!</h3>
+          <ul>
+            <% @profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <p id="notice"><%= notice %></p>
+
+	    <div class="row">
+		    <div class="col-md-12">
+		    
+          <% if current_user.role == "ehdmin" %>
+			      <div class="form-group">
+        			<%= f.label "Claimed" %>
+				      <%= f.select :claimed, [ ['Yes', 'true'], ['No', 'false'] ], {}, { :class => "form-control" } %>
+		        </div>
+          <% end %>
+		        
+          <% if current_user.role == "ehdmin" || current_user.role == "contractor" %>
+		        
+          <% end %>
+
+			    <div class="form-group">
+      			<%= f.label "City" %>
+				    <%= f.select :city_id, options_from_collection_for_select(@cities, '_id', 'pretty_name', (@profile.city.id if @profile.city)), {}, { :class => "form-control" } %>
+		      </div>
+
+			    <div class="form-group">
+      			<%= f.label "Name" %>
+		        <%= f.text_field :name, :class => "form-control", :placeholder => "" %>
+		      </div>
+
+			    <div class="form-group">
+      			<%= f.label "About" %>
+		        <%= f.text_area :about, :rows => 5, :class => "form-control", :placeholder => "" %>
+		        <span class="help-block">Do NOT include any contact information such as phone #, email or website. Clients will contact you through our contact form.</span>
+		      </div>
+		        
+          <% if current_user.role == "seller" %>
+			      <div class="form-group">
+        			<%= f.label "Will you bring your own cleaning supplies?" %>
+				      <%= f.select :supplies, [ ['Yes', 'true'], ['No', 'false'] ], {}, { :class => "form-control" } %>
+		        </div>
+          <% end %>
+
+	        <div class="form-group">
+      			<%= f.label "Maintenance $/h" %>
+		        <%= f.select :hourly_rate, options_for_select(@hourly_rate, :selected => @profile.hourly_rate), {}, { :class => "form-control" } %>
+          </div>
+
+			    <div class="form-group">
+      			<%= f.label "Minimum booking hours" %>
+				    <%= f.select :min_hours, options_for_select(@min_hours, :selected => @profile.min_hours), {}, { :class => "form-control" } %>
+		      </div>
+
+			    <div class="form-group">
+      			<%= f.label "Specific location or neighbourhoods" %>
+		        <%= f.text_field :neighbourhoods, :class => "form-control", :placeholder => "" %>
+		      </div>
+		      
+          <div class="form-group">
+      			<%= f.label "Notification Email" %>
+            <%= f.text_field :email, :class => "form-control", :placeholder => "", :value => "" %>
+          </div>
+		          
+		      <div class="profile-buttons">
+				    <%= f.submit "Save Profile", :class => "btn btn-default" %>
+		      </div>
+
+		    </div>  
+	    </div>
+
+	  </div>
+  </div>
+<% end %>

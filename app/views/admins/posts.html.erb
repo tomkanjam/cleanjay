@@ -1,0 +1,24 @@
+<%= render :partial => "nav" %>	
+<div class="container">
+	<div class="row marg-top-40">
+	
+		<div class="col-md-3" id="">
+		  <div class="widget widget-categories">
+		  
+	      <div class="widget-title"><h5>Blog Posts</h5></div>
+          
+        <ul>
+          <% @posts.each do |post| %>
+            <li><%= link_to post.title, "/ehdmin/edit_post/#{post.title}" %></li>
+          <% end %>
+        </ul>
+          
+      </div>	  			  
+		</div>
+    
+		<div class="col-md-9" id="">
+      <%= render 'posts/form' %>
+    </div>
+		  
+  </div>
+</div>

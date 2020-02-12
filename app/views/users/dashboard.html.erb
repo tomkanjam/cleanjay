@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="span3" id="profile-sidebar">
+
+    <ul class="nav nav-list well">
+      <li class="nav-header">
+        Dashboard
+      </li>
+      <li class="">
+        <a href="/dashboard/overview">Overview</a>
+      </li>
+      <% @profiles.each do |profile| %>
+        <li class="active">
+          <p><a href="#"><%= profile.name %></a></p>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <div class="span8 " id="profile-main">
+    
+
+  </div>
+</div>

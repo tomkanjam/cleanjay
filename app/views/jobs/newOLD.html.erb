@@ -1,0 +1,118 @@
+
+
+<div id="" class="row">
+  <div class="span12" id="">
+		<div class="row">
+			<div class="span9" id="profile_page">
+				
+				<%= render 'profiles/header' %>
+
+				<hr />
+  			<h3>Booking Details</h3>
+    		<%= form_for(@job) do |f| %>
+      
+					<% if @job.errors.any? %>
+						<div id="error_explanation">
+							<p><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</p>
+
+							<ul>
+							<% @job.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+							</ul>
+						</div>
+					<% end %>
+
+					<div class="field">
+						<p class="job-question">When would you like <%= @name %> to start cleaning?</p>
+					  <%= f.text_field :date, :id => "datepicker" %>
+					  <select id="job_time" name="job[time]">
+					    <option value="Anytime">Anytime</option>
+					    <option value="Morning">Morning</option>
+					    <option value="Afternoon">Afternoon</option>
+					    <option value="Evening">Evening</option>
+					    <option value="Late Night">Late Night</option>
+					    <option value="6:00am">6:00am</option>
+					    <option value="6:30am">6:30am</option>
+					    <option value="7:00am">7:00am</option>
+					    <option value="7:30am">7:30am</option>
+					    <option value="8:00am">8:00am</option>
+					    <option value="8:30am">8:30am</option>
+					    <option value="9:00am">9:00am</option>
+					    <option value="9:30am">9:30am</option>
+					    <option value="10:00am">10:00am</option>
+					    <option value="10:30am">10:30am</option>
+					    <option value="11:00am">11:00am</option>
+					    <option value="11:30am">11:30am</option>
+					    <option value="12:00pm">12:00pm</option>
+					    <option value="12:30pm">12:30pm</option>
+					    <option value="1:00pm">1:00pm</option>
+					    <option value="1:30pm">1:30pm</option>
+					    <option value="2:00pm">2:00pm</option>
+					    <option value="2:30pm">2:30pm</option>
+					    <option value="3:00pm">3:00pm</option>
+					    <option value="3:30pm">3:30pm</option>
+					    <option value="4:00pm">4:00pm</option>
+					    <option value="4:30pm">4:30pm</option>
+					    <option value="5:00pm">5:00pm</option>
+					    <option value="5:30pm">5:30pm</option>
+					    <option value="6:00pm">6:00pm</option>
+					    <option value="6:30pm">6:30pm</option>
+					    <option value="7:00pm">7:00pm</option>
+					  </select>
+					</div>
+					<div class="field">
+					  <p class="job-question">How many hours would you like to book <%= @name %> for?</p>
+						<%= f.select :hours, options_for_select(@hours) %>
+					</div>
+					<div class="field">
+						<p class="job-question">Please provide <%= @name %> with directions regarding any cleaning priorities or spcific instructions you may have.</p>
+					  <%= f.text_area :details, :rows => 5, :class => "job-details" %>
+					</div>
+					<div class="field">
+					  <p class="job-question">What’s the cleaning location's street address and postal code?</p>
+					  <%= f.text_field :address, :class => "span3", :placeholder => "51 Sherbrooke Ouest" %> <%= f.text_field :postal_code, :class => "span2", :placeholder => "H2X 1X2" %>
+					</div>
+					<div class="field">
+					  <p class="job-question">What's your phone number?</p>
+					  <%= f.text_field :phone %>
+					</div>
+					<%= f.hidden_field :profile_id, value: @profile_id %>
+					<%= f.hidden_field :rate, value: @rate %>
+
+
+  			<h3>Payment Details <small>Payment processed on day of confirmed booking</small></h3>
+
+				<%= f.hidden_field :stripe_card_token %>
+				<% if @booking %>
+					Credit card has been provided.
+				<% else %>
+					<div class="field">
+						<%= label_tag :card_number, "Credit Card Number" %>
+						<%= text_field_tag :card_number, nil, name: nil %>
+					</div>
+					<div class="field">
+						<%= label_tag :card_code, "Security Code on Card (CVV)" %>
+						<%= text_field_tag :card_code, nil, name: nil %>
+					</div>
+					<div class="field">
+						<%= label_tag :card_month, "Card Expiration" %>
+						<%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+						<%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+					</div>
+				<% end %>
+				<div id="stripe_error">
+					<noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+				</div>
+
+					<div class="actions">
+					  <%= f.submit "Send Booking Request", :class => "btn btn-primary" %>
+					</div>
+    		<% end %>
+			</div>
+		</div>
+
+  </div>
+</div>
+
+

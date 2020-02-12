@@ -1,0 +1,330 @@
+<!-- ==============================================
+		MAIN NAV
+		=============================================== -->
+		<div id="main-nav" class="navbar navbar-fixed-top">
+			<div class="container">
+			
+				<div class="navbar-header">
+				
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
+						<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button>
+					
+					<!-- ======= LOGO ========-->
+					<a class="navbar-brand scrollto" href="#home">
+						<span class="logo-small"><img src="assets/cj_logo.png" alt=""/></span>
+						<span class="to-top"><i class="fa fa-arrow-up"></i></span>
+						
+						CleanJay
+						
+						<!-- ==== Image Logo ==== -->
+						<!--<img class="site-logo" src="assets/logo.png" alt="logo" />-->
+					</a>
+					
+				</div>
+				
+				<div id="site-nav" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="/signup" class="">Cleaner Signup</a>
+						</li>
+						<li>
+							<a href="/login" class="">Login</a>
+						</li>
+					</ul>
+				</div><!--End navbar-collapse -->
+				
+			</div><!--End container -->
+			
+		</div><!--End main-nav -->
+				
+		<!-- ==============================================
+		HEADER
+		=============================================== -->
+		<section id="city-header" class="color-bg light-typo padding-top-bottom">
+		
+			<div class="container">
+				
+				<h1 class="section-title">Montreal's best cleaning services<br />All in one place</h1>
+				
+				
+				
+				<div class="row">
+		      <div class="col-md-8 col-md-offset-2 white-bg">
+				  <h2 class="subsection-title">How it works</h2>
+		      </div>
+			  </div>
+				
+			</div>
+				
+			
+		</section>
+		
+		<!-- ==============================================
+		How it works
+		=============================================== -->
+		<section id="city-how" class="gray-bg padding-top-bottom">
+		
+			<div class="container">
+				
+				<div class="row">
+	        <div class="col-md-8 col-md-offset-2 white-bg">
+				
+				    <div class="process-box white-bg">
+				      <p class="section-description">We send your cleaning job details to Montreal's best cleaning services while keeping your contact information private. We then provide you with quotes so you that you can pick the perfect cleaner.</p>
+			        <ul class="process-list">
+				        <li>
+					        <p class="icon"><i class="fa fa-check fa-fw"></i></p>
+					        <h4>Tell us what you need</h4>
+				        </li>
+				        <li>
+					        <p class="icon"><i class="fa fa-star fa-fw"></i></p>
+					        <h4>Compare offers</h4>
+				        </li>
+				        <li>
+					        <p class="icon"><i class="fa fa-heart fa-fw"></i></p>
+					        <h4>Hire the perfect cleaner</h4>
+				        </li>
+			        </ul>
+				
+					
+				    </div>
+				
+				    <p class="text-center"><a class="btn btn-qubico scrollto" href="#create-booking">OK, Let's try it</a></p>
+				
+			    </div>
+			  </div>
+		  </div>
+			
+		</section>
+		
+		<!-- ==============================================
+		STEP 1
+		=============================================== -->
+		<section id="create-booking" class="padding-top-bottom">
+			
+			<div class="container" id="step-1">
+			
+				<h2 class="subsection-title">First, tell us a bit about the type of cleaning you need.</h2>
+													
+				<div class="row">
+				
+				<!--=== Contact Form ===-->
+
+		      <div class="col-sm-6 col-sm-offset-3" id="contact-form">
+		        <%= form_for(@job, :html => {:novalidate => ""}) do |f| %>
+              						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Type of Building</label>
+						      <select id="job[building_type]" name="job[building_type]" class="form-control">
+                    <option>House</option>
+                    <option>Apartment</option>
+                    <option>Business</option>
+                  </select>
+							    <i class="fa fa-info-circle fa-flip-horizontal"></i>
+						    </div>
+						  </div>
+						  
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Bedrooms</label>
+						      <select id="job[bedrooms]" name="job[bedrooms]" class="form-control">
+                    <option>1 Bedrooom</option>
+                    <option>2 Bedroooms</option>
+                    <option>3 Bedroooms</option>
+                    <option>4 Bedroooms</option>
+                    <option>5+ Bedroooms</option>
+                  </select>
+							    <i class="fa fa-info-circle fa-flip-horizontal"></i>
+						    </div>
+						  </div>
+                      
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Bathrooms</label>
+						      <select id="job[bathrooms]" name="job[bathrooms]" class="form-control">
+                    <option>1 Bathroom</option>
+                    <option>2 Bathrooms</option>
+                    <option>3 Bathrooms</option>
+                    <option>4+ Bathrooms</option>
+                  </select>
+							    <i class="fa fa-info-circle fa-flip-horizontal"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Cleaning Type</label>
+						      <select class="form-control" name="job[cleaning_type]" id="job[cleaning_type]">
+                    <option>One-time / Light Clean</option>
+                    <option>One-time / Deep Clean</option>
+                    <option>Recurring (weekly, monthly...)</option>
+                    <option>Move In/Out</option>
+                    <option>Post Construction</option>
+                  </select>
+							    <i class="fa fa-info-circle fa-flip-horizontal"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Square Feet</label>
+						      <select class="form-control">
+                    <option>Less than 500</option>
+                    <option>500 - 1000</option>
+                    <option>1000 - 1500</option>
+                    <option>1500 - 2000</option>
+                    <option>2000 - 2500</option>
+                    <option>2500 - 3000</option>
+                    <option>More than 3000</option>
+                  </select>
+							    <i class="fa fa-info-circle fa-flip-horizontal"></i>
+						    </div>
+						  </div>
+						
+					    <div class="controls">
+                <div class="btn-group-vertical btn-block" data-toggle="buttons">
+                  <label class="btn btn-default-qubico">
+			                <input name="job[fridge]" id="job[fridge]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw white"></i> Clean inside fridge
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[oven]" id="job[oven]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw white"></i> Clean inside oven
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[cabinets]" id="job[cabinets]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw white"></i> Clean inside cabinets
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[windows]" id="job[windows]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw white"></i> Clean interior windows
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[walls]" id="job[walls]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw white"></i> Clean interior walls
+                  </label>        
+                </div>       
+              </div>
+                    
+						  <div class="form-group">
+						    <label class="control-label" for="contact-message">Details</label>
+							  <div class="controls">
+								  <textarea id="contact-message" name="comments"  placeholder="Cleaning details" class="form-control requiredField label_better" rows="6" data-error-empty="Please enter your message"></textarea>
+								  <i class="fa fa-comment"></i>
+							  </div>
+						  </div>
+						
+						  <p><a href="#step-2" class="btn btn-qubico btn-block scrollto"><i class="fa fa-location-arrow"></i>Continue</a></p>
+						  <input type="hidden" name="submitted" id="submitted" value="true" />
+						
+				  </div>
+				</div>
+				
+			</div>
+			
+		</section>
+		<!-- ==============================================
+		STEP 2
+		=============================================== -->
+		<section id="create-booking" class="padding-top-bottom">
+			
+			<div class="container" id="step-2">
+			
+				<h2 class="subsection-title">OK, last step.</h2>
+				<p class="section-description">We will NOT give out your email to the cleaning services.</p>
+													
+				<div class="row">
+				
+				<!--=== Form Continued ===-->
+
+		      <div class="col-sm-6 col-sm-offset-3" id="contact-form">
+            						
+						  <div class="form-group">
+						    <label class="control-label" for="contact-name">Date</label>
+						    <div class="controls">
+							    <input id="datepicker" name="contactName" placeholder="Cleaning date" class="form-control requiredField label_better" type="text" data-error-empty="Please enter your name">
+							    <i class="fa fa-calendar"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Cleaning Time</label>
+						        <select id="job_time" name="job[time]" class="form-control input-lg">
+							        <option value="Anytime">Anytime</option>
+							        <option value="Morning">Morning</option>
+							        <option value="Afternoon">Afternoon</option>
+							        <option value="Evening">Evening</option>
+							        <option value="Late Night">Late Night</option>
+							        <option value="6:00am">6:00am</option>
+							        <option value="6:30am">6:30am</option>
+							        <option value="7:00am">7:00am</option>
+							        <option value="7:30am">7:30am</option>
+							        <option value="8:00am">8:00am</option>
+							        <option value="8:30am">8:30am</option>
+							        <option value="9:00am">9:00am</option>
+							        <option value="9:30am">9:30am</option>
+							        <option value="10:00am">10:00am</option>
+							        <option value="10:30am">10:30am</option>
+							        <option value="11:00am">11:00am</option>
+							        <option value="11:30am">11:30am</option>
+							        <option value="12:00pm">12:00pm</option>
+							        <option value="12:30pm">12:30pm</option>
+							        <option value="1:00pm">1:00pm</option>
+							        <option value="1:30pm">1:30pm</option>
+							        <option value="2:00pm">2:00pm</option>
+							        <option value="2:30pm">2:30pm</option>
+							        <option value="3:00pm">3:00pm</option>
+							        <option value="3:30pm">3:30pm</option>
+							        <option value="4:00pm">4:00pm</option>
+							        <option value="4:30pm">4:30pm</option>
+							        <option value="5:00pm">5:00pm</option>
+							        <option value="5:30pm">5:30pm</option>
+							        <option value="6:00pm">6:00pm</option>
+							        <option value="6:30pm">6:30pm</option>
+							        <option value="7:00pm">7:00pm</option>
+						        </select>
+							    <i class="fa fa-clock-o"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <label class="control-label" for="contact-name">Postal Code</label>
+						    <div class="controls">
+							    <input id="contact-name" name="contactName" placeholder="Postal code" class="form-control requiredField label_better" type="text" data-error-empty="Please select a time">
+							    <i class="fa fa-map-marker"></i>
+						    </div>
+						  </div>
+
+						  <div class="form-group">
+						    <label class="control-label" for="contact-mail">Email</label>
+						    <div class=" controls">
+							    <input id="contact-mail" name="email" placeholder="Your email" class="form-control requiredField label_better" type="email" data-error-empty="Please enter your email" data-error-invalid="Invalid email address">
+							    <i class="fa fa-envelope"></i>
+						    </div>
+						  </div>
+						
+						  <p><a href="file:///home/asdf/Dropbox/Apps/Quibico/HTML/3-my_booking.html" class="btn btn-qubico btn-block"><i class="fa fa-location-arrow"></i>Finish</a></p>
+						  <input type="hidden" name="submitted" id="submitted" value="true" />
+						
+				    <% end %><!-- End contact-form -->
+				  </div>
+				
+				</div>
+				
+			</div>
+			
+		</section>
+		
+		<!-- ==============================================
+		FOOTER
+		=============================================== -->	
+		<footer id="main-footer" class="light-typo">
+		
+			<div class="container text-center">
+			
+			</div>
+			
+		</footer>

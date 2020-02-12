@@ -1,0 +1,83 @@
+
+<!-- ==============================================
+HEADER
+=============================================== -->
+		<section id="double-header" class="color-bg light-typo padding-top-bottom">
+		
+			<div class="container center">
+				
+				<h1 class="section-title">Create your CleanJay account</h1>
+				
+				<p class="section-description">CleanJay will connect you with people looking for cleaning services</p>
+									
+			</div><!-- End container -->
+			
+		</section>
+
+<!-- ==============================================
+FORM
+=============================================== -->
+
+<section class="padding-top-bottom">
+  <div class="container">
+    <div class="row">			
+			<p class="section-description">This information will remain private and will NOT be publicly visible</p>
+
+      <div class="col-sm-6 col-sm-offset-3" id="contact-form" class="no-placeholder">
+        <%= form_for @user, :html => {:role => "form", :class => "no-placeholder"} do |f| %>
+              		
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <div class="alert alert-danger"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</div>
+
+              <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+  
+        	<div class="form-group">
+            <label>First Name</label>
+            <%= f.text_field :first_name, :class => "form-control requiredField label_better", :placeholder => "First Name (Required)" %>
+          </div>
+
+        	<div class="form-group">
+            <label>Last Name</label>
+            <%= f.text_field :last_name, :class => "form-control requiredField label_better", :placeholder => "Last Name (Required)" %>
+          </div>
+
+        	<div class="form-group">
+            <label>Phone</label>
+            <%= f.text_field :phone, :class => "form-control requiredField label_better", :placeholder => "Phone Number (Required)" %>
+          </div>
+
+        	<div class="form-group">
+            <label>Email</label>
+            <%= f.text_field :email, :class => "form-control requiredField label_better", :placeholder => "Email (Required)" %>
+          </div>
+          
+        	<div class="form-group">
+            <label>Password</label>
+            <%= f.password_field :password, { :class => "form-control" } %>
+          </div>
+        
+          <div class="actions">
+            <% if action_name == "account" %>
+              <p><button name="submit" type="submit" class="btn btn-qubico btn-block" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Booking Request Created"><i class="fa fa-location-arrow"></i>Save</button></p>
+            <% else %>
+              <p><button name="submit" type="submit" class="btn btn-qubico btn-block" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Booking Request Created"><i class="fa fa-location-arrow"></i>Save & Continue</button></p>
+            <% end %>
+          </div>
+          
+          <%= f.hidden_field :claim_id, value: @claim_id %>
+                            
+        <% end %>
+  		  
+      </div>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,277 @@
+		<!-- ==============================================
+		HEADER
+		=============================================== -->
+		<section id="city-header" class="color-bg light-typo padding-top-bottom">
+		
+			<div class="container center">
+				
+				<h1 class="section-title">Cleaning Services in Montreal</h1>
+				
+				<p class="section-description">Easily compare quotes from Montreal's best cleaning services</p>
+											
+				<a id="try_it_free" class="btn btn-qubico white scrollto" href="#create-booking"><i class="fa fa-arrow-down"></i>Try it free</a>
+									
+			</div><!-- End container -->
+			
+		</section>
+				
+		<!-- ==============================================
+		STEP 1
+		=============================================== -->
+		<section id="create-booking" class="padding-top-bottom">
+			
+			<div class="container" id="step-1">
+			
+				<h2 class="subsection-title">Cleaning details</h2>
+				<p class="section-description">Tell us a bit about the type of cleaning you need so that we can get you accurate quotes</p>
+													
+				<div class="row">
+				
+				<!--=== Contact Form ===-->
+
+		      <div class="col-sm-6 col-sm-offset-3" id="contact-form">
+		        <%= form_for(@job, :html => {:novalidate => ""}) do |f| %>
+              						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Type of Building</label>
+						      <select id="job[building_type]" name="job[building_type]" class="form-control requiredField" data-error-empty="Required">
+                    <option value>Building type (Required)</option>
+                    <option>Apartment</option>
+                    <option>House</option>
+                  </select>
+							    <i class="fa fa-home"></i>
+						    </div>
+						  </div>
+						  
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Bedrooms</label>
+						      <select id="job[bedrooms]" name="job[bedrooms]" class="form-control requiredField" data-error-empty="Required">
+                    <option value>Number of bedrooms (Required)</option>
+                    <option value="1">1 Bedrooom</option>
+                    <option value="2">2 Bedroooms</option>
+                    <option value="3">3 Bedroooms</option>
+                    <option value="4">4 Bedroooms</option>
+                    <option value="5">5+ Bedroooms</option>
+                  </select>
+							    <i class="fa fa-home"></i>
+						    </div>
+						  </div>
+                      
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Bathrooms</label>
+						      <select id="job[bathrooms]" name="job[bathrooms]" class="form-control requiredField" data-error-empty="Required">
+                    <option value>Number of bathrooms (Required)</option>
+                    <option value="1">1 Bathroom</option>
+                    <option value="2">2 Bathrooms</option>
+                    <option value="3">3 Bathrooms</option>
+                    <option value="4">4+ Bathrooms</option>
+                  </select>
+							    <i class="fa fa-home"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Square Feet</label>
+						      <select class="form-control requiredField" name="job[square_footage]" id="job[square_footage]" data-error-empty="Required">
+                    <option value>Square footage (Required)</option>
+                    <option>Don't know square footage</option>
+                    <option>Less than 500 Sq. Feet</option>
+                    <option>500 - 1000 Sq. Feet</option>
+                    <option>1000 - 1500 Sq. Feet</option>
+                    <option>1500 - 2000 Sq. Feet</option>
+                    <option>2000 - 2500 Sq. Feet</option>
+                    <option>2500 - 3000 Sq. Feet</option>
+                    <option>More than 3000 Sq. Feet</option>
+                  </select>
+							    <i class="fa fa-home"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Cleaning Type</label>
+						      <select class="form-control requiredField" name="job[cleaning_type]" id="job[cleaning_type]" data-error-empty="Required">
+                    <option value>Cleaning type (Required)</option>
+                    <option>One-time / Light Clean</option>
+                    <option>One-time / Deep Clean</option>
+                    <option>Recurring (weekly, monthly...)</option>
+                    <option>Move In/Out</option>
+                    <option>Post Construction</option>
+                  </select>
+							    <i class="fa fa-dashboard"></i>
+						    </div>
+						  </div>
+						
+					    <div class="controls">
+                <div class="btn-group-vertical btn-block" data-toggle="buttons">
+                  <label class="btn btn-default-qubico">
+			                <input name="job[fridge]" id="job[fridge]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw darker-grey"></i> Clean inside fridge
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[oven]" id="job[oven]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw darker-grey"></i> Clean inside oven
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[cabinets]" id="job[cabinets]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw darker-grey"></i> Clean inside cabinets
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[windows]" id="job[windows]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw darker-grey"></i> Clean interior windows
+                  </label>        
+                  <label class="btn btn-default-qubico">
+			                <input name="job[walls]" id="job[walls]" type="checkbox" value="true" class="est">
+			                <i class="fa fa-check fa-fw darker-grey"></i> Clean interior walls
+                  </label>        
+                </div>       
+              </div>
+                    
+						  <div class="form-group">
+						    <label class="control-label" for="contact-message">Details</label>
+							  <div class="controls">
+								  <textarea id="job[details]" name="job[details]"  placeholder="Additional cleaning details or instructions" class="form-control requiredField label_better" rows="6" data-error-empty="Required"></textarea>
+								  <i class="fa fa-comment"></i>
+							  </div>
+						  </div>
+						  
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Number of hours</label>
+						      <select class="form-control requiredField" name="job[hours]" id="job[hours]" data-error-empty="Required">
+                    <option value>Number of hours (Required)</option>
+                    <option value="0">I'm not sure how many hours are required</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                  </select>
+							    <i class="fa fa-home"></i>
+						    </div>
+						  </div>
+						
+					    <%= f.hidden_field :city_id, :value => @city_id %>
+						            						
+						  <div class="form-group">
+						    <label class="control-label" for="contact-name">Date</label>
+						    <div class="controls">
+							    <input id="datepicker" name="job[date]" placeholder="Cleaning date (Required)" class="form-control requiredField label_better" type="text" data-error-empty="Required">
+							    <i class="fa fa-calendar"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <div class="controls">
+						      <label class="control-label" for="contact-mail">Cleaning Time</label>
+						        <select id="job_time" name="job[time]" class="form-control input-lg requiredField" data-error-empty="Required">
+							        <option value>Time (Required)</option>
+							        <option value="Anytime">Anytime</option>
+							        <option value="Morning">Morning</option>
+							        <option value="Afternoon">Afternoon</option>
+							        <option value="Evening">Evening</option>
+							        <option value="Late Night">Late Night</option>
+							        <option value="6:00am">6:00am</option>
+							        <option value="6:30am">6:30am</option>
+							        <option value="7:00am">7:00am</option>
+							        <option value="7:30am">7:30am</option>
+							        <option value="8:00am">8:00am</option>
+							        <option value="8:30am">8:30am</option>
+							        <option value="9:00am">9:00am</option>
+							        <option value="9:30am">9:30am</option>
+							        <option value="10:00am">10:00am</option>
+							        <option value="10:30am">10:30am</option>
+							        <option value="11:00am">11:00am</option>
+							        <option value="11:30am">11:30am</option>
+							        <option value="12:00pm">12:00pm</option>
+							        <option value="12:30pm">12:30pm</option>
+							        <option value="1:00pm">1:00pm</option>
+							        <option value="1:30pm">1:30pm</option>
+							        <option value="2:00pm">2:00pm</option>
+							        <option value="2:30pm">2:30pm</option>
+							        <option value="3:00pm">3:00pm</option>
+							        <option value="3:30pm">3:30pm</option>
+							        <option value="4:00pm">4:00pm</option>
+							        <option value="4:30pm">4:30pm</option>
+							        <option value="5:00pm">5:00pm</option>
+							        <option value="5:30pm">5:30pm</option>
+							        <option value="6:00pm">6:00pm</option>
+							        <option value="6:30pm">6:30pm</option>
+							        <option value="7:00pm">7:00pm</option>
+						        </select>
+							    <i class="fa fa-clock-o"></i>
+						    </div>
+						  </div>
+						
+						  <div class="form-group">
+						    <label class="control-label" for="contact-name">Postal Code</label>
+						    <div class="controls">
+							    <input id="contact-name" name="job[postal_code]" placeholder="Postal code (Required)" class="form-control requiredField label_better" type="text" data-error-empty="Required">
+							    <i class="fa fa-map-marker"></i>
+						    </div>
+						  </div>
+
+						  <div class="form-group">
+						    <label class="control-label" for="contact-mail">Email</label>
+						    <div class=" controls">
+							    <input id="contact-mail" name="job[email]" placeholder="Your email (Required)" class="form-control requiredField label_better" type="email" data-error-empty="Required" data-error-invalid="Please enter a valid email address">
+							    <i class="fa fa-envelope"></i>
+						    </div>
+						  </div>
+						
+              <p><button id="create_booking_request" name="submit" type="submit" class="btn btn-qubico btn-block" data-error-message="Error!" data-sending-message="Sending..." data-ok-message="Booking Request Created"><i class="fa fa-location-arrow"></i>Finished</button></p>
+						  <input type="hidden" name="submitted" id="submitted" value="true" />
+						
+				    <% end %><!-- End contact-form -->
+				  </div>
+				
+				</div>
+				
+			</div>
+			
+		</section>
+		
+		<!-- ==============================================
+		FOOTER
+		=============================================== -->	
+		<footer id="main-footer" class="light-typo">
+		
+			<div class="container text-center">
+			
+			</div>
+			
+		</footer>
+		
+<% if Rails.env.production? %>
+  <!-- Google Code for New lead Conversion Page -->
+  <script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 980328320;
+  var google_conversion_language = "en";
+  var google_conversion_format = "3";
+  var google_conversion_color = "ffffff";
+  var google_conversion_label = "hzS2CKvRylcQgL-60wM";
+  var google_remarketing_only = false;
+  /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+  <div style="display:inline;">
+  <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/980328320/?label=hzS2CKvRylcQgL-60wM&amp;guid=ON&amp;script=0"/>
+  </div>
+  </noscript>
+<% end %>

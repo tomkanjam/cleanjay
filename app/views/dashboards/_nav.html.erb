@@ -1,0 +1,18 @@
+<div class="nav nav-pills nav-stacked">
+    
+  <ul class="nav nav-pills nav-stacked">
+  	<li><a href="/dashboard/bookings" style="<%= 'color:#9cc4e8;' if action_name == "bookings" %>">Bookings</a></li>
+    <li><a href="/dashboard/profile" style="<%= 'color:#9cc4e8;' if action_name == "profile" %>">Edit Profile</a></li>
+    <li><a href="/dashboard/account" style="<%= 'color:#9cc4e8;' if action_name == "account" %>">Account</a></li>
+  </ul>
+    
+</div>
+
+<div class="widget widget-categories">
+	<div class="widget-title"><h5>Help</h5></div>
+    
+     <p>Please do not hesitate to email support@cleanjay.ca if you have any questions or feedback.</p>
+    
+</div>
+
+<p <%= "class='alert alert-success' id='dash-overview-notice'" if notice %>><%= notice %></p>

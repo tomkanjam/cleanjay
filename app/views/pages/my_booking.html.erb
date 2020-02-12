@@ -1,0 +1,288 @@
+<!-- ==============================================
+HEADER
+=============================================== -->
+<section id="booking-header" class="color-bg light-typo">
+
+  <div class="container center">
+    
+  <% if @job.cancelled %>
+    <div class="section-title">
+      <h1 class="super-title">Your booking has been cancelled.</h1>
+      <p class="subheading"><a href="<%= @job.city.url %>"> Create new booking</a></p>
+    </div>
+  <% else %>
+    <h1 class="section-title no-after" id="no-after">My Booking Request</h1>
+  <% end %>
+                                
+  </div><!-- End container -->
+  
+</section>
+
+
+<!-- ==============================================
+BOOKING DETAILS
+=============================================== -->
+<section id="blog-categories" class="gray-bg">
+
+  <div class="container">
+  
+    <div class="row">
+      
+      <div>
+      
+        <h1 class="subsection-title booking-date"><%= @job.date.strftime("%B %e, %Y").to_s + " - " + @job.time.to_s %></h1>
+        
+        <% if @job.details != "" %>
+          <p><%= @job.details %></p>
+        <% end %>
+      
+        <ul>
+          <li class="">
+            <span><%= @job.building_type %></span>
+          </li>
+          <li>
+            <span><%= @job.hours == 0 ? "# of hours not specified" : (@job.hours.to_s + " hour" + ("s" if @job.hours != 1)) %></span>
+          </li>
+          <li>
+            <span><%= @job.cleaning_type %></span>
+          </li>
+          <li>
+            <span><%= @job.bedrooms %> bedroom<%= "s" if (@job.bedrooms > 1) %></span>
+          </li>
+          <li>
+            <span><%= @job.bathrooms %> bathroom<%= "s" if (@job.bathrooms > 1) %></span>
+          </li>
+          <li>
+            <span><%= @job.square_footage %></span>
+          </li>
+          <% if @job.fridge %>
+            <li>
+              <span>Clean inside fridge</span>
+            </li>
+          <% end %>
+          <% if @job.oven %>
+            <li>
+              <span>Clean inside oven</span>
+            </li>
+          <% end %>
+          <% if @job.cabinets %>
+            <li>
+              <span>Clean inside cabinets</span>
+            </li>
+          <% end %>
+          <% if @job.windows %>
+            <li>
+              <span>Clean interior windows </span>
+            </li>
+          <% end %>
+          <% if @job.walls %>
+            <li>
+              <span>Clean interior walls </span>
+            </li>
+          <% end %>
+        </ul>
+                              
+      </div><!--End Blog Categories -->	
+      
+    </div><!--End row-->
+    
+  </div><!--End container -->
+  
+</section>
+
+<!-- ==============================================
+OFFERS
+=============================================== -->
+<% if @job.cancelled %>
+<% else %>
+  <% if @job.winning_offer_id %>
+  
+    <% offer = Offer.find(@job.winning_offer_id) %>
+    
+    <section id="offers" class="">
+      <div class="container">
+        <h1 class="subsection-title">Winning Offer</h1>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-lg-offset-3 offer-pricing">
+              
+              <div class="col-sm-12 text-center offer-item">
+
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                      <p class="icon"><img width="100%" src="<%= offer.profile.image.thumb %>" /></p>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-xs-12 text-center">
+                      <h2><%= offer.profile.name %></h2>
+                    </div>
+                  </div>
+                      
+                  <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <p class=""><%= simple_format(offer.profile.about, :sanitize => true) %></p>
+                    </div>
+                  </div>
+                      
+                  <div class="row gray-bg">
+                    <div class="col-sm-6 text-center">
+                      <p class="price">$<%= offer.dollar_amount %></p>
+                      <p class="price-details"><%= offer.cleaner_amount %> Cleaner<%= "s" if offer.cleaner_amount > 1 %> for
+                      <%= offer.hour_amount %> Hour<%= "s" if offer.hour_amount > 1 %></p>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                      <a class="btn btn-qubico btn-qubico-white" data-toggle="modal" data-backdrop="false" data-target="#<%= offer.id %>-cancel-booking">Cancel Booking</a>
+                    </div>
+                  </div>
+                  						
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
+                   
+    
+        <!-- Modal -->
+        <div class="modal fade" id="<%= offer.id %>-cancel-booking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="myModalLabel">Booking Cancellation </h3>
+              </div>
+              
+              <%= form_tag('/jobs/buyer-cancel-booking') do %>
+                <div class="modal-body">
+                  <p class="">Are you sure you want to cancel this booking?</p>
+                  <%= hidden_field_tag "id", @job.id %>
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= submit_tag "Cancel Booking", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    
+  <% else %>
+    <% if @offers.count > 0 %>
+            
+      <section id="offers" class="">
+        <div class="container">
+          <h1 class="subsection-title">Offers</h1>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-lg-offset-3 offer-pricing">
+              <% @offers.each do |offer| %>
+                
+                <div class="col-sm-12 text-center offer-item">
+
+                    <div class="row">
+                      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+                        <p class="icon"><img width="100%" src="<%= offer.profile.image.thumb %>" /></p>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-xs-12 text-center">
+                        <h2><%= offer.profile.name %></h2>
+                      </div>
+                    </div>
+                        
+                    <div class="row">
+                      <div class="col-sm-12 text-center">
+                        <p class=""><%= simple_format(offer.profile.about, :sanitize => true) %></p>
+                      </div>
+                    </div>
+                        
+                    <div class="row gray-bg">
+                      <div class="col-sm-6 text-center">
+                        <p class="price">$<%= offer.dollar_amount %></p>
+                        <p class="price-details"><%= offer.cleaner_amount %> Cleaner<%= "s" if offer.cleaner_amount > 1 %> for
+                        <%= offer.hour_amount %> Hour<%= "s" if offer.hour_amount > 1 %></p>
+                      </div>
+                      <div class="col-sm-6 text-center">
+                        <a class="btn btn-qubico" data-toggle="modal" data-backdrop="false" data-target="#<%= offer.id %>-offer">Book Me</a>
+                      </div>
+                    </div>
+                    						
+                </div>
+
+                
+                <!-- Modal -->
+                <div class="modal fade" id="<%= offer.id %>-offer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title" id="myModalLabel">Booking Confirmation</h3>
+                      </div>
+                      
+                      <%= form_tag('/jobs/buyer-confirm-booking') do %>
+                        <div class="modal-body" id="contact-form">
+                          								                
+						                <div class="form-group">
+						                  <label class="control-label" for="contact-name">Name</label>
+						                  <div class="controls">
+                                <%= text_field_tag :name, nil, class: "form-control requiredField label_better", placeholder: "Your name (Required)" %>
+							                  <i class="fa fa-smile-o"></i>
+						                  </div>
+						                </div>
+                            
+						                <div class="form-group">
+						                  <label class="control-label" for="contact-name">Address</label>
+						                  <div class="controls">
+                                <%= text_field_tag :address, nil, class: "form-control requiredField label_better", placeholder: "Street address (Required)" %>
+							                  <i class="fa fa-map-marker"></i>
+						                  </div>
+						                </div>
+
+						                <div class="form-group">
+						                  <label class="control-label" for="contact-name">Phone Number</label>
+						                  <div class="controls">
+                                <%= phone_field_tag :phone, nil, class: "form-control requiredField label_better", placeholder: "Phone number (Required)" %>
+							                  <i class="fa fa-phone"></i>
+						                  </div>
+						                </div>
+                            
+                            <%= hidden_field_tag :job_id, @job.id %>
+                            <%= hidden_field_tag :winning_profile_id, offer.profile_id %>
+                            <%= hidden_field_tag :winning_offer_id, offer.id %>
+                          
+                        </div>
+                        
+                        <div class="modal-footer gray-bg">
+                          <%= submit_tag "Confirm Booking", :class => "btn btn-qubico" %>
+                        </div>
+                      <% end %>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+              <% end %>
+        
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <% else %>
+      <section id="offers" class="">
+        <div class="container">
+          <h1 class="subsection-title">Offers</h1>
+          <p class="section-description">You will be receiving offers soon</p>
+        </div>
+      </section>
+    <% end %>
+  <% end %>
+<% end %>

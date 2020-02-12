@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+<a href="/dashboard/overview" class="btn"><i class="icon-chevron-left"></i> Back</a>
+<br /><br />
+
+<div id="" class="row">
+  <div class="span12" id="">
+
+    <div class="" id="profile-body">
+      <div id="" class="row">
+
+        <div class="span9" id="profile-header">
+          <h1><%= @profile.h %></h1>
+          <h2><%= @profile.z %></h2>
+          <fb:like send="false" layout="button_count" width="450" show_faces="true" font="arial"></fb:like>
+          <hr />          
+          <div id="" class="row">
+            <div class="span9 lead" id="">
+              <%= simple_format(@profile.d) %>      
+            </div>
+          </div>
+        </div>
+  
+        <div class="span3" id="profile-sidebar">
+          <div class="thumbnail">
+            <%= image_tag @profile.image.thumb %>
+            <div class="caption">
+              <h2><%= @profile.n %></h2>
+              <p><button 
+                  class="btn btn-large" 
+                  href="" 
+                  data-toggle="modal"
+                  id="get_quote_button">
+                    Get quote
+                </button></p>
+            </div>
+          </div>
+          <div class="thumbnail">
+            <div class="caption">
+              <h4>Provided by cleaner:</h4>
+              <% if @supplies %>
+                <p><span class="label green-label"><i class="icon-ok icon-white"></i> <%= @supplies %></span></p>
+              <% end %>
+              <% if @vacuum %>
+                <p><span class="label green-label"><i class="icon-ok icon-white"></i> <%= @vacuum %></span></p>
+              <% end %>
+              <% if @mop %>
+                <p><span class="label green-label"><i class="icon-ok icon-white"></i> <%= @mop %></span></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

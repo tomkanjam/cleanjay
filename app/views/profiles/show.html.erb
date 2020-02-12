@@ -1,0 +1,154 @@
+<div id="content">
+  <div class="container">
+  
+	  <div class="row">
+		  <div class="col-md-12" id="">
+			  <div class="title"><h1 class="h-light"><%= @name %></h1></div>
+      </div>
+    </div>
+    
+	  <div class="row">
+		  <div class="col-md-12" id="">
+	      <div class="row">
+	      
+		      <div class="col-md-9" id="">
+	          <div class="row">
+		          <div class="col-md-12" id="">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                		<p><%= simple_format(@about) %></p>
+                	</div>
+                </div>
+              </div>
+            </div>
+                
+	          <div class="row">
+		          <div class="col-md-12" id="">
+                <div class="text-bar marg-top-20">
+                  <div class="row">
+                    <div class="col-md-9 col-sm-9">
+                      <h3>We estimate that you need <%= @total_hours %> cleaning hours</h3>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                      <a id="book_me_button" class="btn-link" href="/new-booking/<%= @profile_id %>/?h=<%= @total_hours %>">
+                        <button class="btn btn-default">
+                          $<%= @price %> - Book Me
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+        
+            <!--
+			      <div class="row">
+				      <div id="comments" class="col-md-12 col-sm-12">
+		              <div class="title"><h5>Reviews:&nbsp;<span class="comments-count">5</span></h5></div>
+		              
+		              <div class="comments-container">
+		                  <ol class="commentlist">
+		                      <li class="comment">
+		                      	<div class="comment-container">
+		                              <div class="comment-box">
+		                              	<div class="comment-author">
+																      Adrian · July 31, 2013 at 15:15 
+																      <p class="stars">
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																      </p>
+															      </div>
+		                              	<div class="comment-text"><p>Duis vulputate, lacus id accumsan lacinia, neque sapien cursus nunc, et fermentum velit diam ac metus. Pellentesque tortor arcu, congue eget sem quis, porta aliquam arcu. Aliquam augue sapien, consectetur quis.</p></div>
+		                              </div>
+		                          </div>                      
+		                      </li>
+		                      <li class="comment">
+		                      	<div class="comment-container">
+		                              <div class="comment-box">
+		                              	<div class="comment-author">
+																      Adrian · July 31, 2013 at 15:15 
+																      <p class="stars">
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																      </p>
+															      </div>
+		                              	<div class="comment-text"><p>Ibero vitae, convallis pellentesque libero. Maecenas non nunc semper, bibendum enim tempus, sollicitudin nibh. Pellentesque arcu orci, scelerisque non turpis dignissim, sollicitudin vehicula felis. Morbi gravida sollicitudin eros, molestie sodales nisi bibendum a. Phasellus eu semper ipsum. </p></div>
+		                              </div>
+		                          </div>
+		                      </li>
+		                      <li class="comment">
+		                      	<div class="comment-container">
+		                              <div class="comment-box">
+		                              	<div class="comment-author">
+																      Adrian · July 31, 2013 at 15:15 
+																      <p class="stars">
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																      </p>
+															      </div>
+		                              	<div class="comment-text"><p> Aliquam augue sapien, consectetur quis libero vitae, convallis pellentesque libero. Maecenas non nunc semper, bibendum enim tempus, sollicitudin nibh. Pellentesque arcu orci, scelerisque non.</p></div>
+		                              </div>
+		                          </div>
+		                      </li>
+		                      <li class="comment">
+		                      	<div class="comment-container">
+		                              <div class="comment-box">
+		                              	<div class="comment-author">
+																      Adrian · July 31, 2013 at 15:15 
+																      <p class="stars">
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																	      <i class="icon-star"></i>
+																      </p>
+															      </div>
+		                              	<div class="comment-text"><p>Donec sagittis tincidunt vulputate. Pellentesque metus arcu, luctus ut accumsan vitae, mattis at ligula. Etiam tempor commodo sapien et molestie. Aliquam nec bibendum nulla. Suspendisse placerat libero felis, quis elementum est pulvinar sed. Fusce tristique nisl vel massa euismod placerat.</p></div>
+		                              </div>
+		                          </div>
+		                      </li>
+		                  </ol>
+		                  
+		          	</div>
+		          </div>
+		        </div>
+            -->
+	        </div>
+	        
+          <div class="col-md-3 top-marg-40">
+            <div id="show-profile-sidebar" class="text-box">
+              <div class="text-box-content">
+		      
+                <div class="text-box-content">
+                  <h5>
+                    <i class="fa <%= @licensed ? "fa-check-square" : "fa-square-o" %>"></i> Licensed
+                  </h5>
+                  <h5>
+                    <i class="fa <%= @licinsuredensed ? "fa-check-square" : "fa-square-o" %>"></i> Insured
+                  </h5>
+                  <h5>
+                    <i class="fa <%= @bonded ? "fa-check-square" : "fa-square-o" %>"></i> Bonded
+                  </h5>
+	              </div>          
+                
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+	  </div>
+  </div>
+</div>
+

@@ -1,0 +1,53 @@
+<% @jobs.each do |job| %>
+
+					<div class="row">    
+  					<div class="span2">
+							<strong><%= job.name %></strong>
+						</div>
+
+  					<div class="span5">
+							<a href="/jobs/#{job.id}"><h4><%= job.hours %> hour<%= "s" if job.hours > 1 %> on <%= job.date.strftime("%A, %B %-d") %>, <%= job.time %></h4></a>
+							<a href="/jobs/#{job.id}"><p><%= job.address %>, <%= job.profile.city.pretty_name %></p></a>
+						</div>
+  
+  					<div class="span2">
+							<% case job.status %> 
+							<% when "pending" %> 
+								<span class="label label-warning">Pending</span>
+							<% when "confirmed" %> 
+								<span class="label label-success">Confirmed</span>
+							<% end %> 
+						</div>
+					</div>
+
+				<% end %>
+
+
+		<table class="table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+				  <th>Name</th>
+				  <th>Hours</th>
+				  <th>Details</th>
+				  <th>Date</th>
+				  <th>Address</th>
+				  <th>Preferred Contact Method</th>
+				  <th>Email</th>
+				  <th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @jobs.each do |job| %>
+				<tr>
+				  <td><%= job.name %></td>
+				  <td><%= job.hours %></td>
+				  <td><%= job.details %></td>
+				  <td><%= job.date.strftime("%a, %B %-d") %>, <%= job.time %></td>
+				  <td><%= job.address %></td>
+				  <td><%= job.contact %></td>
+				  <td><%= job.email %></td>
+				  <td><%= job.phone %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>

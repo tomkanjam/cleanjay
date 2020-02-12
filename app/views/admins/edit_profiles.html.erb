@@ -1,0 +1,32 @@
+<%= render :partial => "nav" %>	
+<div class="container">
+	<div class="row marg-top-40">
+	
+		<div class="col-md-3" id="">
+		  <div class="widget widget-categories">
+		  
+	      <div class="widget-title"><h5><% @city %></h5></div>
+          
+        <ul>
+          <% @cities.each do |city| %>
+            <li><%= link_to city.pretty_name, "/ehdmin/edit_profiles/#{city.url}" %></li>
+          <% end %>
+        </ul>
+          
+      </div>	  			  
+		</div>
+		
+		<div class="col-md-3" id="">
+      <ul>
+        <% @city.profiles.each do |profile| %>
+          <li><%= link_to profile.name, "/ehdmin/edit_profile/#{profile.id}" %></li>
+        <% end %>
+      </ul>
+    </div>
+    
+		<div class="col-md-6" id="">
+      <%= render 'profiles/form' %>
+    </div>
+		  
+  </div>
+</div>

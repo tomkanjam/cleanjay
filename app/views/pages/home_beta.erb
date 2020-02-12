@@ -1,0 +1,60 @@
+
+
+<header id="home">
+  <nav class="home-nav">
+	  <div class="logo">
+		  <h1><%= image_tag "cj_logo_white.png" %></h1>
+	  </div>
+	  <div class="menu-trigger">
+		  <a href="#"><i class="fa fa-bars"></i></a>
+	  </div>
+	  <ul>
+		  <li>
+		    <%= link_to "Cleaner Signup", "/signup", :class => "btn btn-warning" %>
+		  </li>
+		  <li>
+		    <%= link_to "Login", "/login", :class => "" %>
+		  </li>
+	  </ul>		
+  </nav>
+
+	<div id="maximage" class="maximage-slider">
+	</div>
+	<div class="pattern"></div>
+	<div class="home-wrapper">
+		<div class="logo">
+			<h1>CleanJay</h1>
+		</div>
+		<div id="home-slider">
+			<div class="star-line">
+				<span class="line-pre"></span>
+				<span class="icons">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+				</span>
+				<span class="line-after"></span>
+			</div>
+			<ul class="bxslider">
+			  <li>
+          <h1>We are launching soon</h1>
+          <h3>Sign up to get notified</h3>
+        </li>
+			</ul>
+		</div>
+	    <%= form_tag('/save-beta', {:class => 'form-inline', :id => 'save-beta'}) do -%>
+		    <div class="form-group">
+			    <input id="email" name="email" type="text" placeholder="you@example.com" class="form-control">
+		    </div>
+		    <div class="form-group">
+		      <button class="btn btn-primary" name="commit" type="submit">
+			      Send »
+		      </button>
+		    </div>
+	    <% end %>   
+   
+	    <% if notice %>
+		    <p class="marg-top-20 highlight2" id="beta-notice"><%= notice %></p>  
+	    <% end %> 
+	</div>
+</header>

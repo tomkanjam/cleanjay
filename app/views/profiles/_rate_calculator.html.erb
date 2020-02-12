@@ -1,0 +1,166 @@
+<div class="col-md-3 top-marg-40">
+  <div id="show-profile-sidebar" class="text-box">
+    <div class="text-box-content">
+			<%= form_tag(@form_desitnation, :remote => true, :id => "rate-form") do %>
+        <% if action_name == "city_page" %>
+          <label>
+            Bedrooms
+          </label>
+          <div class="form-group">
+					  <select id="bedrooms" name="bedrooms" class="form-control est">
+	            <option value="0" <%= "selected=''" if session[:bedrooms] == 0.0 %>>1 bedroom</option>	
+	            <option value="1" <%= "selected=''" if session[:bedrooms] == 1.0 %>>2 bedrooms</option>
+	            <option value="2" <%= "selected=''" if session[:bedrooms] == 2.0 %>>3 bedrooms</option>
+	            <option value="3" <%= "selected=''" if session[:bedrooms] == 3.0 %>>4 bedrooms</option>
+	            <option value="4" <%= "selected=''" if session[:bedrooms] == 4.0 %>>5 or more bedrooms</option>
+	          </select>
+          </div>
+
+          <label>
+            Bathrooms
+          </label>
+          <div class="form-group">
+					  <select id="bathrooms" name="bathrooms" class="form-control est">
+	            <option value="0" <%= "selected=''" if session[:bathrooms] == 0.0 %>>1 bathroom</option>
+	            <option value="1" <%= "selected=''" if session[:bathrooms] == 1.0 %>>2 bathrooms</option>
+	            <option value="2" <%= "selected=''" if session[:bathrooms] == 2.0 %>>3 bathrooms</option>
+	            <option value="3" <%= "selected=''" if session[:bathrooms] == 3.0 %>>4 bathrooms</option>
+	            <option value="4" <%= "selected=''" if session[:bathrooms] == 4.0 %>>5 or more bathrooms</option>
+	          </select>
+          </div>
+
+          <label class="extras">
+            Extras
+          </label>
+          <div class="form-group">
+					  <div class="checkbox marg-top-0">
+						  <label>
+							  <input name="fridge" id="fridge" type="checkbox" value="0.5" class="est" <%= "checked='true'" if session[:fridge] == true %>>
+							  Inside Fridge
+						  </label>
+					  </div>
+
+					  <div class="checkbox">
+						  <label>
+							  <input name="oven" id="oven" type="checkbox" value="0.5" class="est" <%= "checked='true'" if session[:oven] == true %>>
+							  Inside oven
+						  </label>
+					  </div>
+
+					  <div class="checkbox">
+						  <label>
+							  <input name="cabinets" id="cabinets" type="checkbox" value="1.0" class="est" <%= "checked='true'" if session[:cabinets] == true %>>
+							  Inside Cabinets
+						  </label>
+					  </div>
+
+					  <div class="checkbox">
+						  <label>
+							  <input name="windows" id="windows" type="checkbox" value="1.0" class="est" <%= "checked='true'" if session[:windows] == true %>>
+							  Interior Windows
+						  </label>
+					  </div>
+
+					  <div class="checkbox">
+						  <label>
+							  <input name="walls" id="walls" type="checkbox" value="1.0" class="est" <%= "checked='true'" if session[:walls] == true %>>
+							  Interior Walls
+						  </label>
+					  </div>
+				  </div>
+				  
+          <label>
+            Cleaning Type
+          </label>
+          <div class="radio marg-top-0 est">
+            <label>
+              <input type="radio" name="cleaning_type" id="maintenance" value="maintenance" checked>
+              Regular Maintenance
+            </label>
+          </div>
+          <div class="radio est">
+            <label>
+              <input type="radio" name="cleaning_type" id="onetime" value="onetime">
+              One-time 
+            </label>
+          </div>
+          <div class="radio est">
+            <label>
+              <input type="radio" name="cleaning_type" id="move" value="move">
+              Move In/Out
+            </label>
+          </div>
+          <div class="radio est">
+            <label>
+              <input type="radio" name="cleaning_type" id="construction" value="construction">
+              Post Construction
+            </label>
+          </div>
+          
+				  
+          <label>
+            Estimated Hours
+          </label>
+          <div class="form-group">
+					  <select id="total_hours" name="total_hours" class="form-control">          
+		          <option value="2.5" <%= "selected=''" if session[:total_hours] == 2.5 %>>2.5 hours</option>				      
+		          <option value="3" <%= "selected=''" if session[:total_hours] == 3.0 %>>3.0 hours</option>				      
+		          <option value="3.5" <%= "selected=''" if session[:total_hours] == 3.5 %>>3.5 hours</option>				      
+		          <option value="4" <%= "selected=''" if session[:total_hours] == 4.0 %>>4.0 hours</option>				      
+		          <option value="4.5" <%= "selected=''" if session[:total_hours] == 4.5 %>>4.5 hours</option>				      
+		          <option value="5" <%= "selected=''" if session[:total_hours] == 5.0 %>>5.0 hours</option>				      
+		          <option value="5.5" <%= "selected=''" if session[:total_hours] == 5.5 %>>5.5 hours</option>				      
+		          <option value="6" <%= "selected=''" if session[:total_hours] == 6.0 %>>6.0 hours</option>				      
+		          <option value="6.5" <%= "selected=''" if session[:total_hours] == 6.5 %>>6.5 hours</option>				      
+		          <option value="7" <%= "selected=''" if session[:total_hours] == 7.0 %>>7.0 hours</option>				      
+		          <option value="7.5" <%= "selected=''" if session[:total_hours] == 7.5 %>>7.5 hours</option>				      
+		          <option value="8" <%= "selected=''" if session[:total_hours] == 8.0 %>>8.0 hours</option>				      
+		          <option value="8.5" <%= "selected=''" if session[:total_hours] == 8.5 %>>8.5 hours</option>				      
+		          <option value="9" <%= "selected=''" if session[:total_hours] == 9.0 %>>9.0 hours</option>				      
+		          <option value="9.5" <%= "selected=''" if session[:total_hours] == 9.5 %>>9.5 hours</option>				      
+		          <option value="10" <%= "selected=''" if session[:total_hours] == 10.0 %>>10.0 hours</option>				      
+		          <option value="10.5" <%= "selected=''" if session[:total_hours] == 10.5 %>>10.5 hours</option>				      
+		          <option value="11" <%= "selected=''" if session[:total_hours] == 11.0 %>>11.0 hours</option>				      
+		          <option value="11.5" <%= "selected=''" if session[:total_hours] == 11.5 %>>11.5 hours</option>				      
+		          <option value="12" <%= "selected=''" if session[:total_hours] == 12.0 %>>12.0 hours</option>				      
+		          <option value="12.5" <%= "selected=''" if session[:total_hours] == 12.5 %>>12.5 hours</option>				      
+		          <option value="13" <%= "selected=''" if session[:total_hours] == 13.0 %>>13.0 hours</option>				      
+		          <option value="13.5" <%= "selected=''" if session[:total_hours] == 13.5 %>>13.5 hours</option>				      
+		          <option value="14" <%= "selected=''" if session[:total_hours] == 14.0 %>>14.0 hours</option>				      
+		          <option value="14.5" <%= "selected=''" if session[:total_hours] == 14.5 %>>14.5 hours</option>				      
+		          <option value="15" <%= "selected=''" if session[:total_hours] == 15.0 %>>15.0 hours</option>				      
+		          <option value="15.5" <%= "selected=''" if session[:total_hours] == 15.5 %>>15.5 hours</option>     		      
+		          <option value="16" <%= "selected=''" if session[:total_hours] == 16.0 %>>16.0 hours</option>				      
+		          <option value="16.5" <%= "selected=''" if session[:total_hours] == 16.5 %>>16.5 hours</option>				      
+		          <option value="17" <%= "selected=''" if session[:total_hours] == 17.0 %>>17.0 hours</option>				      
+		          <option value="17.5" <%= "selected=''" if session[:total_hours] == 17.5 %>>17.5 hours</option>        
+      			</select>
+    			</div>
+    			
+          <div class="form-group">
+				    <%= submit_tag "Get Estimates", :class => "btn btn-info" %>
+          </div>
+          
+			  <% end %>
+		    
+		    <%= (hidden_field_tag "city", @city.url) if @city  %>
+        <%= hidden_field_tag "hourly_rate", @hourly_rate %>
+			<% end %>
+
+      <% if action_name == "show" %>
+	      <div id="price" class="text-box-btn">
+				  <h4>$<%= @price %></h4>
+	      </div>
+	      
+        <div class="text-box-btn">
+          <a id="book_me_button" class="btn-link" href="/new-booking/<%= @profile_id %>">
+            <button class="btn btn-default">
+              Book Me
+            </button>
+          </a>
+        </div>        
+			<% end %>                
+        
+    </div>
+  </div>
+</div>

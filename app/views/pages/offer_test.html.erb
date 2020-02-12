@@ -1,0 +1,141 @@
+
+          
+            <% if @profiles.count > 0 %>
+            
+              <!-- ==============================================
+              HEADER
+              =============================================== -->
+              <section id="booking-header" class="color-bg light-typo">
+              
+                <div class="container center">
+                  
+                  <h1 class="section-title no-after" id="no-after">My Booking Request</h1>
+                                              
+                </div><!-- End container -->
+                
+              </section>
+              
+              <section id="blog-categories" class="gray-bg">
+		
+                <div class="container">
+                
+                  <div class="row">
+                    
+                    <div>
+                    
+                      <h1 class="subsection-title booking-date"><%= @job.date.strftime("%B %e, %Y").to_s + " - " + @job.time.to_s %></h1>
+                      
+                      <% if @job.details != "" %>
+                        <p><%= @job.details %></p>
+                      <% end %>
+                    
+                      <ul>
+                        <li class="">
+                          <span><%= @job.building_type %></span>
+                        </li>
+                        <li>
+                          <span><%= @job.cleaning_type %></span>
+                        </li>
+                        <li>
+                          <span><%= @job.bedrooms %> bedroom<%= "s" unless (@job.bedrooms > 1) %></span>
+                        </li>
+                        <li>
+                          <span><%= @job.bedrooms %> bedroom<%= "s" unless (@job.bedrooms > 1) %></span>
+                        </li>
+                        <li>
+                          <span><%= @job.square_footage %></span>
+                        </li>
+                        <% if @job.fridge %>
+                          <li>
+                            <span>Clean inside fridge</span>
+                          </li>
+                        <% end %>
+                        <% if @job.oven %>
+                          <li>
+                            <span>Clean inside oven</span>
+                          </li>
+                        <% end %>
+                        <% if @job.cabinets %>
+                          <li>
+                            <span>Clean inside cabinets</span>
+                          </li>
+                        <% end %>
+                        <% if @job.windows %>
+                          <li>
+                            <span>Clean interior windows </span>
+                          </li>
+                        <% end %>
+                        <% if @job.walls %>
+                          <li>
+                            <span>Clean interior walls </span>
+                          </li>
+                        <% end %>
+                      </ul>
+                                            
+                    </div><!--End Blog Categories -->	
+                    
+                  </div><!--End row-->
+                  
+                </div><!--End container -->
+                
+              </section>
+              
+              
+              <section id="offers" class="">
+                <div class="container">
+                  <h1 class="subsection-title">Offers</h1>
+                </div>
+		
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3 offer-pricing">
+                      <% @profiles.each do |profile| %>
+                        
+					              <div class="col-sm-12 text-center offer-item">
+					
+                            <div class="row">
+					                    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 text-center">
+							                  <p class="icon"><img width="100%" src="<%= profile.image.thumb %>" /></p>
+					                    </div>
+				                    </div>
+				                    
+                            <div class="row">
+					                    <div class="col-xs-12 text-center">
+							                  <h2><%= profile.name %></h2>
+					                    </div>
+				                    </div>
+                                
+                            <div class="row">
+					                    <div class="col-sm-12 text-center">
+							                  <p class=""><%= simple_format(profile.about, :sanitize => true) %></p>
+					                    </div>
+				                    </div>
+							                  
+                            <div class="row gray-bg">
+					                    <div class="col-sm-6 text-center">
+							                  <p class="price">$110 </p>
+							                  <p class="price-details">1 Cleaner for
+							                  5 Hours</p>
+					                    </div>
+					                    <div class="col-sm-6 text-center">
+							                  <a class="btn btn-qubico" data-toggle="modal" data-backdrop="false" >Book Me</a>
+					                    </div>
+					                  </div>
+					                  						
+					              </div>
+					              
+                      <% end %>
+                
+				            </div>
+				          </div>
+					      </div>
+		          </section>
+                
+                
+            <% else %>
+		          	
+              
+            <% end %>
+		            
+		    
+

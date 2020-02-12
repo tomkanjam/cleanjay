@@ -1,0 +1,25 @@
+<div class="full-width-image-city">
+
+  <div class="logo-wrapper">
+    <h1 class="h-light">Cleaning Services in <%= @city_name %></h1>
+  </div>
+	
+</div>
+
+
+<div id="content">
+
+  <div class="container">
+		<div class="row">
+		
+		  <%= render :partial => "rate_calculator" %>
+			
+  
+	    <div class="col-sm-9" id="profile_cards">
+		    <%= render :partial => "profile_list" %>
+	    </div>
+	  
+	  </div>
+	</div>
+</div>
+

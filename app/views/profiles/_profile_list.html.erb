@@ -1,0 +1,41 @@
+<% @profiles.each do |profile| %>	
+
+  <div class="text-bar marg-bottom-20">
+    <div class="row">
+    
+      <div class="col-md-9 col-xs-12">
+        <h3><b><%= profile.name %></b></h3>
+        <h5 class="marg-top-5"><%= profile.about[0..120] %></h5>
+        <p class="marg-bottom-5 marg-top-5"><i class="icon-fa-map-marker"></i> <%= profile.neighbourhoods[0..63] %></p>
+      </div>
+      
+      <div class="col-md-3 col-xs-12 marg-top-10">
+        <div class="row">
+          <div class="col-md-12 col-xs-2 rate">
+	          <% case @cleaning_type %>
+	          <% when "maintenance" %>
+			        <h4 class="price">$<%= (profile.maintenance_rate * @hours).to_i %></h4>
+	         <%  when "onetime" %>
+			        <h4 class="price">$<%= (profile.onetime_rate * @hours).to_i %></h4>
+	          <% when "move" %>
+			        <h4 class="price">$<%= (profile.move_rate * @hours).to_i %></h4>
+	          <% when "construction" %>
+			        <h4 class="price">$<%= (profile.construction_rate * @hours).to_i %></h4>
+	          <% end %>
+          </div>
+          <div class="col-md-12 col-xs-10">
+			      <a href="/<%= profile.city.url %>/<%= profile.url %>" class="btn btn-small">Details</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<% end %>	
+
+
+<script>
+  $(".price").animate({color: "#2f96b4" });
+  $(".price").animate({color: "#696969" });
+</script>

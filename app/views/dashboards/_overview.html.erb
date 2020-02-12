@@ -1,0 +1,41 @@
+<ul class="nav nav-pills">
+  <li><a href="/profiles/<%= @profile.id %>/edit"><i class="icon-edit"></i> Edit Profile</a></li>
+  <li><a href="/show-profile"><i class="icon-eye-open"></i> Show Profile</a></li>
+<% if @published %>
+
+  <li><a href="/unpublish-profile" data-confirm="Your profile will no longer be visible to the public. Are you sure you want to unpublish you profile?"><i class="icon-circle-arrow-down"></i> Unpublish Profile</a></li>
+</ul>
+
+<% else %>
+
+  <li><a href="/publish-profile" class="red"><i class="icon-circle-arrow-up"></i> Publish Profile</a></li>
+</ul>
+  <p class="lead">
+    You haven't published your profile so it's not visible to the public. Click the red "Publish Profile" link above to make your profile visible.
+  </p>
+
+<% end %>
+
+<div class="row" id="stats">  
+
+  <div class="span3">  
+    <p class="number">
+      <%= @views %>
+    </p>
+
+    <h4 class="title">
+      Views
+    </h4>
+  </div>
+
+  <div class="span3">  
+    <p class="number">
+      <%= @jobs %>
+    </p>
+
+    <h4 class="title">
+      Quote Requests
+    </h4>
+  </div>
+
+</div>

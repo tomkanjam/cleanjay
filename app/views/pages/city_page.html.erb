@@ -1,0 +1,258 @@
+<header id="home">
+	<div id="maximage" class="maximage-slider">
+	</div>
+	<div class="pattern"></div>
+	<div class="home-wrapper">
+		<div class="logo marg-top-40">
+			  <h1>Cleaning Services in <%= @city_name %></h1>
+		</div>
+		<div id="home-slider">
+			<div class="star-line">
+				<span class="line-pre"></span>
+				<span class="icons">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+				</span>
+				<span class="line-after"></span>
+			</div>
+			<ul class="bxslider marg-bottom-40">
+			  <li>
+	    <h2>Looking for awesome cleaning services in <%= @city_name %>?<br />Don't worry, we did all the leg work for you :)</h2>
+        </li>
+			</ul>
+		</div>
+
+<section class="grey" id="step1">
+	<div class="container page">
+		<div class="section-title">
+			<h2>First, tell us about the cleaning you need done.</h2>
+		</div>
+	<div class="row marg-top-40">			
+
+		<div class="col-md-4 col-md-offset-4" id="">
+		  <%= form_for(@job, :html => {:class => ""}) do |f| %>
+		  		
+			  <div class="panel panel-default">
+				  <div class="panel-body">
+		      
+					  <% if @job.errors.any? %>
+						  <div id="error_explanation">
+							  <div class="alert alert-danger"><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</div>
+
+							  <ul>
+							  <% @job.errors.full_messages.each do |msg| %>
+								  <li><%= msg %></li>
+							  <% end %>
+							  </ul>
+						  </div>
+					  <% end %>
+
+					    <div class="row">
+						    <div class="col-md-12" id="">
+                  <label class="input-label">
+                    Home Type
+                  </label>
+                  <div class="form-group">
+                    <div class="btn-group-vertical btn-block" data-toggle="buttons">
+                      <label class="btn btn-primary active">
+                          <input type="radio" name="job[building_type]" id="house" value="house" checked>
+                          House
+                      </label>
+                      <label class="btn btn-primary">
+                          <input type="radio" name="job[building_type]" id="apartment" value="apartment">
+                          Apartment 
+                      </label>
+                    </div>
+                  </div>
+			          </div>
+		          </div>
+		          
+						  <div class="row">
+							  <div class="col-md-12" id="">
+                  <label class="input-label">
+                    Bedrooms
+                  </label>
+                  <div class="form-group">
+					          <select id="job[bedrooms]" name="job[bedrooms]" class="form-control input-lg">
+	                    <option value="1">1 bedroom</option>	
+	                    <option value="2">2 bedrooms</option>
+	                    <option value="3">3 bedrooms</option>
+	                    <option value="4">4 bedrooms</option>
+	                    <option value="5">5 or more bedrooms</option>
+	                  </select>
+                  </div>
+                </div>
+              </div>
+
+						  <div class="row">
+							  <div class="col-md-12" id="">
+                  <label class="input-label">
+                    Bathrooms
+                  </label>
+                  <div class="form-group">
+					          <select id="job[bathrooms]" name="job[bathrooms]" class="form-control input-lg">
+	                    <option value="1">1 bathroom</option>
+	                    <option value="2">2 bathrooms</option>
+	                    <option value="3">3 bathrooms</option>
+	                    <option value="4">4 bathrooms</option>
+	                    <option value="5">5 or more bathrooms</option>
+	                  </select>
+                  </div>
+                </div>
+              </div>  
+
+					    <div class="row">
+						    <div class="col-md-12" id="">
+                  <label class="input-label">
+                    Cleaning Type
+                  </label>
+                  <div class="form-group">
+                    <div class="btn-group-vertical btn-block" data-toggle="buttons">
+                      <label class="btn btn-primary active">
+                          <input type="radio" name="job[cleaning_type]" id="maintenance" value="recurring" checked>
+                          Recurring (weekly, monthly...)
+                      </label>
+                      <label class="btn btn-primary">
+                          <input type="radio" name="job[cleaning_type]" id="onetime" value="onetime">
+                          One-time 
+                      </label>
+                      <label class="btn btn-primary">
+                          <input type="radio" name="job[cleaning_type]" id="move" value="move">
+                          Move In/Out
+                      </label>
+                      <label class="btn btn-primary">
+                          <input type="radio" name="job[cleaning_type]" id="construction" value="construction">
+                          Post Construction
+                      </label>
+                    </div>
+                  </div>
+			          </div>
+		          </div>
+					    
+					    <div class="row">
+						    <div class="col-md-12" id="">
+                  <label class="input-label" class="">
+                    Extras
+                  </label>
+                  <div class="form-group">
+                    <div class="btn-group-vertical btn-block" data-toggle="buttons">
+                      <label class="btn btn-primary">
+						              <input name="job[fridge]" id="job[fridge]" type="checkbox" value="true" class="est">
+						              Clean inside fridge
+                      </label>        
+                      <label class="btn btn-primary">
+						              <input name="job[oven]" id="job[oven]" type="checkbox" value="true" class="est">
+						              Clean inside oven
+                      </label>        
+                      <label class="btn btn-primary">
+						              <input name="job[cabinets]" id="job[cabinets]" type="checkbox" value="true" class="est">
+						              Clean inside cabinets
+                      </label>        
+                      <label class="btn btn-primary">
+						              <input name="job[windows]" id="job[windows]" type="checkbox" value="true" class="est">
+						              Clean interior windows
+                      </label>        
+                      <label class="btn btn-primary">
+						              <input name="job[walls]" id="job[walls]" type="checkbox" value="true" class="est">
+						              Clean interior walls
+                      </label>        
+                    </div>
+                  </div>
+			          </div>
+		          </div>
+				      
+							  
+				      <div class="row">
+					      <div class="col-md-12" id="">
+			            <label class="input-label">Cleaning date</label>
+                  <div class="form-group">
+					          <div class="input-group">
+					            <span class="input-group-addon input-lg"><i class="fa fa-calendar"></i></span>
+                      <%= f.text_field :date, :id => "datepicker", :class => "form-control input-lg" %>
+                    </div>
+                  </div>
+				        </div>
+				      </div>
+					      
+				      <div class="row">
+					      <div class="col-md-12" id="">
+			            <label class="input-label">Cleaning time</label>
+                  <div class="form-group">
+						        <select id="job_time" name="job[time]" class="form-control input-lg">
+							        <option value="Anytime">Anytime</option>
+							        <option value="Morning">Morning</option>
+							        <option value="Afternoon">Afternoon</option>
+							        <option value="Evening">Evening</option>
+							        <option value="Late Night">Late Night</option>
+							        <option value="6:00am">6:00am</option>
+							        <option value="6:30am">6:30am</option>
+							        <option value="7:00am">7:00am</option>
+							        <option value="7:30am">7:30am</option>
+							        <option value="8:00am">8:00am</option>
+							        <option value="8:30am">8:30am</option>
+							        <option value="9:00am">9:00am</option>
+							        <option value="9:30am">9:30am</option>
+							        <option value="10:00am">10:00am</option>
+							        <option value="10:30am">10:30am</option>
+							        <option value="11:00am">11:00am</option>
+							        <option value="11:30am">11:30am</option>
+							        <option value="12:00pm">12:00pm</option>
+							        <option value="12:30pm">12:30pm</option>
+							        <option value="1:00pm">1:00pm</option>
+							        <option value="1:30pm">1:30pm</option>
+							        <option value="2:00pm">2:00pm</option>
+							        <option value="2:30pm">2:30pm</option>
+							        <option value="3:00pm">3:00pm</option>
+							        <option value="3:30pm">3:30pm</option>
+							        <option value="4:00pm">4:00pm</option>
+							        <option value="4:30pm">4:30pm</option>
+							        <option value="5:00pm">5:00pm</option>
+							        <option value="5:30pm">5:30pm</option>
+							        <option value="6:00pm">6:00pm</option>
+							        <option value="6:30pm">6:30pm</option>
+							        <option value="7:00pm">7:00pm</option>
+						        </select>
+					        </div>
+					      </div>
+			        </div>
+					    
+					    <div class="row">
+						    <div class="col-md-12" id="">
+          	      <div class="form-group">
+					          <label class="input-label">Postal code</label>
+							      <%= f.text_field :postal_code, :class => "form-control input-lg" %>
+						      </div> 
+					      </div> 	        	
+				      </div> 
+					  
+					    <div class="row">
+						    <div class="col-md-12" id="">
+                	<div class="form-group">
+					          <label class="input-label">Email</label>
+					          <%= f.email_field :email, :class => "form-control input-lg" %>
+					          <span class="help-block">We'll email you the quotes. We will NOT share your email address with the cleaners or anybody else.</span>
+				          </div>
+					      </div> 	        	
+				      </div> 
+
+					    <div class="row">
+						    <div class="col-md-12" id="">
+					        <div class="actions">
+						        <%= f.submit "Send Me Quotes!", :class => "btn btn-primary btn-lg btn-submit btn-block" %>
+					        </div>
+					      </div> 	        	
+				      </div> 
+					          <%= f.hidden_field :city_id, :value => @city.id %>
+					  
+			    </div>
+  		  <% end %>
+  		  
+		  </div>
+	  </div>
+	</div>
+</section>
+
+
+	</div>
+</header>

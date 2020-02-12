@@ -1,0 +1,170 @@
+<div class="container grey marg-top-40">
+	<div class="row marg-top-40">
+	
+		<div class="col-md-3" id="">
+		  <%= render :partial => "bookings_nav" %>		  			  
+		</div>
+		
+		<div class="col-md-9" id="">
+		
+      <% if @jobs.count > 0 %>
+      
+        <% @jobs.each do |job| %>
+          
+            <div class="row booking-panel">
+              <div class="col-md-11">
+                <div class="row">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="col-md-4">
+                        <a href="https://maps.google.com/maps?q=<%= job.postal_code %>">
+			                  <img width="100%" src="http://maps.googleapis.com/maps/api/staticmap?center=<%= job.postal_code %>&zoom=13&size=227x200&sensor=false&markers=markerStyles|<%= job.postal_code %>" />
+			                  </a>
+                      </div>
+                      <div class="col-md-5">
+                          <h4><%= job.date.strftime("%A, %B %-d") %>, <%= job.time %></h4>
+                          <p><span>Home type:</span> <%= job.building_type.split.map(&:capitalize).join(' ') %></p>
+                          <p><span>Bedrooms:</span> <%= job.bedrooms %></p>
+                          <p><span>Bathrooms:</span> <%= job.bathrooms %></p>
+                          <p><span>Cleaning type:</span> <%= job.cleaning_type.split.map(&:capitalize).join(' ') %></p>
+                          <p><span>Extras:</span> <%= "Fridge" if job.fridge %> <%= "Oven" if job.oven %> <%= "Cabinets" if job.cabinets %> <%= "Interior windows" if job.windows %> <%= "Walls" if job.walls %></p>
+                        </a>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <!--
+                          <div class="col-md-12">
+                              <p>
+                                <% case job.status %> 
+                                <% when "pending" %> 
+	                                <h3><span class="label label-warning">Pending</span></h3>
+                                <% when "confirmed" %> 
+	                                <h3><span class="label label-success">Confirmed</span></h3>
+                                <% when "cancelled" %> 
+	                                <h3><span class="label label-default">Cancelled</span></h3>
+                                <% end %> 
+                              </p>
+                          </div>
+                          -->
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <% if job.winning_profile_id ==  @profile.id %>
+                              <% offer = job.winning_offer %>
+                              <div class="panel panel-default">
+                                <div class="panel-heading">
+                                  Your offer: <strong>$<%= offer.dollar_amount if offer.dollar_amount %></strong> <%= job.id %>
+                                </div>
+                                <div class="panel-footer">
+                                  <a class="" data-toggle="modal" data-backdrop="false" data-target="#<%= job.id %>-edit-offer">Change</a> / <a class="" data-toggle="modal" data-backdrop="false" data-target="#<%= job.id %>-edit-offer">Cancel</a>
+                                </div>
+                              </div>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="<%= job.id %>-edit-offer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                  
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title" id="myModalLabel">Change an Offer</h4>
+                                    </div>
+                                    
+                                    <%= form_for(offer, url: "/dashboard/update-offer") do |f| %>
+                                      <div class="modal-body">
+                                        		
+                                        	<div class="form-group">
+                                            <label>Dollar amount</label>
+                                            <%= f.text_field :dollar_amount, :class => "job-details form-control", :placeholder => "0" %>
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label>Number of hours</label>
+                                            <%= f.text_field :hour_amount, :class => "form-control", :placeholder => "0" %>
+                                          </div>
+                                          
+                                        	<div class="form-group">
+                                            <label>Number of cleaners</label>
+                                            <%= f.text_field :cleaner_amount, :class => "form-control", :placeholder => "0" %>
+                                          </div>
+                                          
+                                          <%= f.hidden_field :profile_id, :value => @profile.id %>
+                                          <%= f.hidden_field :job_id, :value => job.id %>
+                                          <%= f.hidden_field :offer_id, :value => offer.id %>
+                                        
+                                      </div>
+                                      
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <%= f.submit "Send Updated Offer", :class => "btn btn-primary" %>
+                                      </div>
+                                    <% end %>
+                                  </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                              </div><!-- /.modal -->
+                              
+                            <% else %>
+                              <% offer = Offer.new %>
+                              <a class="btn btn-primary btn-red btn-block" data-toggle="modal" data-backdrop="false" data-target="#<%= job.id %>-new-offer">Make an Offer</a>
+                              
+                              <!-- Modal -->
+                              <div class="modal fade" id="<%= job.id %>-new-offer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                  
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                      <h4 class="modal-title" id="myModalLabel">Make an Offer</h4>
+                                    </div>
+                                    
+                                    <%= form_for(offer, url: "/dashboard/create-offer") do |f| %>
+                                      <div class="modal-body">
+                                        		
+                                        	<div class="form-group">
+                                            <label>Dollar amount</label>
+                                            <%= f.text_field :dollar_amount, :class => "job-details form-control", :placeholder => "0" %>
+                                          </div>
+
+                                          <div class="form-group">
+                                            <label>Number of hours</label>
+                                            <%= f.text_field :hour_amount, :class => "form-control", :placeholder => "0" %>
+                                          </div>
+                                          
+                                        	<div class="form-group">
+                                            <label>Number of cleaners</label>
+                                            <%= f.text_field :cleaner_amount, :class => "form-control", :placeholder => "0" %>
+                                          </div>
+                                          
+                                          <%= f.hidden_field :profile_id, :value => @profile.id %>
+                                          <%= f.hidden_field :job_id, :value => job.id %>
+                                        
+                                      </div>
+                                      
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <%= f.submit "Send Offer", :class => "btn btn-primary" %>
+                                      </div>
+                                    <% end %>
+                                  </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                              </div><!-- /.modal -->
+                              
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+                    
+        <% end %>
+      <% else %>
+        <h4>We're working on gettings some more bookings for you...</h4>
+      <% end %>
+		          
+	  </div>
+		  
+  </div>
+</div>

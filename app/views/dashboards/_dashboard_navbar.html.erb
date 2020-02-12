@@ -1,0 +1,19 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class=<%= "active" if request.fullpath == "/dashboard/overview" %>>
+        <a href="/dashboard/overview">Overview</a>
+      </li>
+      <li class="dropdown <%= "active" if request.fullpath.scan("profile")[0]  %>">
+        <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Profiles <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <% @profiles.each do |profile| %>
+            <li class="<%= "active" if profile.id.to_s == params[:id] %>">
+              <a href="/dashboard/profile/<%= profile.id %>"><%= profile.n %> - <%= profile.city.pretty_name %></a>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

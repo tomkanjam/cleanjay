@@ -1,0 +1,41 @@
+<div class="row" id="profile_header">
+
+  <div class="span2">
+    <%= image_tag @thumb %>
+  </div>
+
+  <div class="span7" id="">
+		<div class="row">
+
+ 			<div class="span5" id="">
+		    <h2><%= @name %></h2>
+		    <h3><%= @heading %></h3>
+		    <p class="neighbourhoods">
+					<i class="icon-map-marker"></i> <%= @neighbourhoods %>
+				</p>				        
+  		</div>	
+
+ 			<div class="span2" id="">
+		    <p id="hourly-rate">
+					<span class="rate">$<%= @hourly_rate %></span> <span class="hr">/ hr</span>
+		    </p>	
+		    <p class="stars">
+					<% if @rating %>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<i class="icon-star-empty"></i>
+						<span class="rating">(<%= @rating %>)</span>	
+					<% else %>
+						(no ratings)
+					<% end %>
+				<!--        
+				-->
+		    </p>		
+  		</div>	
+    
+  	</div>			        
+  </div>
+
+</div>

@@ -1,0 +1,20 @@
+<ul class="nav nav-pills nav-stacked">
+	<li class="<%= 'active' if action_name == "bookings" %>">
+	  <a href="/dashboard/bookings">
+	    <span class="badge pull-right"><%= @job_count %></span>
+	    Bookings and Offers
+	  </a>
+	 </li>
+  <li class="<%= 'active' if action_name == "my_bookings" %>">
+    <a href="/dashboard/my-bookings">
+	    <span class="badge pull-right <%= 'red-badge' if (action_name != "my_bookings" && @won_job_count > 0)  %>"><%= @won_job_count %></span>
+      My Confirmed Bookings
+    </a>
+</ul>
+    
+<div class="widget widget-categories">
+	<div class="widget-title"><h5></h5></div>
+   <p>Please email support@cleanjay.ca if you have any questions or feedback.</p> 
+</div>
+
+<p <%= "class='alert alert-success' id='dash-overview-notice'" if notice %>><%= notice %></p>

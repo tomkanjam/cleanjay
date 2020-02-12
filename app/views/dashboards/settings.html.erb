@@ -1,0 +1,25 @@
+<div class="row">
+    
+  <div class="span12 " id="dashboard-main">
+		<div class="well" id="stipe-well">
+			<h2>Setup your Stripe account to receive payments!</h2>
+			<p>Stripe makes it really easy to accept payments online. Click the button below to get started.</p>
+			<a class="btn-link" href="https://connect.stripe.com/oauth/authorize?
+				response_type=code&
+				stripe_landing=register&
+				client_id=ca_1jlEA6ToNmHRPP0WixYcCusAtT8jqnn1&
+				stripe_user[business_name]=<%= @business_name %>&
+				stripe_user[first_name]=<%= @first_name %>&
+				stripe_user[last_name]=<%= @last_name %>&
+				stripe_user[business_type]=<%= @business_type %>&
+				stripe_user[phone_number]=<%= @phone_number %>
+				stripe_user[url]=<%= @url %>&
+				stripe_user[product_category]=<%= @product_category %>&
+				stripe_user[physical_product]=<%= @physical_product %>&
+				stripe_user[email]=<%= @email %>">
+				<%= image_tag 'big_stripe_button.png' %>
+			</a>
+		</div>
+  </div>
+
+</div>

@@ -1,0 +1,91 @@
+<div class="container marg-top-100">    
+		<div class="col-md-6 col-md-offset-3" id="contact-form">
+            <%= form_for @profile, :html => {:multipart => true, :role => "form"} do |f| %>
+                
+                  <% if @profile.errors.any? %>
+                    <div id="error_explanation">
+                      <h4>Please resolve the following so that we can create your profile, thanks!</h4>
+                      <ul>
+                        <% @profile.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+                  <p id="notice"><%= notice %></p>
+
+	                <div class="row">
+		                <div class="col-md-12">
+		                    
+	                    <div class="form-group">
+                  			<%= image_tag @profile.image.thumb %>
+                      </div>
+                      
+			                <div class="form-group">
+                  			<%= f.label "Picture*" %>
+		                    <%= f.file_field :image, :class => "form-control", :accept => 'image/png,image/jpeg' %>
+                        <span class="help-block">A picture of the person doing the cleaning is required</span>
+		                  </div>
+
+			                <div class="form-group">
+                  			<%= f.label "City*", :class => "input-label" %>
+				                <%= f.select :city_id, options_from_collection_for_select(@cities, '_id', 'pretty_name', (@profile.city.id if @profile.city)), {}, { :class => "form-control" } %>
+							            <i class="fa fa-bars"></i>
+		                  </div>
+
+			                <div class="form-group">
+                  			<%= f.label "About*" %>
+		                    <%= f.text_area :about, :id => "about", :rows => 5, :class => "form-control", :placeholder => "", :maxlength => '300' %>
+							            <i class="fa fa-bars"></i>
+							            <span class="maxLength" data-textareaid="about"></span>
+		                  </div>
+		                    
+                      <% if current_user.role == "seller" %>
+			                  <div class="form-group">
+                    			<%= f.label "Will you bring your own cleaning supplies?*" %>
+				                  <%= f.select :supplies, [ ['I will bring supplies', 'true'], ['I will NOT bring supplies', 'false'] ], {}, { :class => "form-control" } %>
+							            <i class="fa fa-bars"></i>
+		                    </div>
+                      <% end %>
+						          
+	                    <div class="form-group">
+                  			<%= f.label "Hourly rate*" %>
+		                    <%= f.select :hourly_rate, options_for_select(@hourly_rate, :selected => "$" + @profile.hourly_rate.to_s + "/hour"), {}, { :class => "form-control" } %>
+						            <i class="fa fa-bars"></i>
+                      </div>
+
+			                <div class="form-group">
+                  			<%= f.label "Minimum booking hours*" %>
+				                <%= f.select :min_hours, options_for_select(@min_hours, :selected => @profile.min_hours.to_s + " hours minimum"), {}, { :class => "form-control" } %>
+						            <i class="fa fa-bars"></i>
+		                  </div>
+
+			                <div class="form-group">
+                  			<%= f.label "Specific location or neighbourhoods" %>
+		                    <%= f.text_field :neighbourhoods, :class => "form-control", :placeholder => "" %>
+						            <i class="fa fa-bars"></i>
+		                  </div>
+		                  
+			                <div class="form-group">
+                  			<%= f.label "Notification email" %>
+		                    <%= f.text_field :notification_email, :class => "form-control", :placeholder => "" %>
+						            <i class="fa fa-bars"></i>
+		                  </div>
+		                      
+		                  <div class="profile-buttons">
+				                <%= f.submit "Save Profile", :class => "btn btn-default btn-lg btn-warning btn-block" %>
+		                  </div>
+
+                      <div class="form-group">
+                  			<%= f.label "* Required Field", :class => "input-label" %>
+		                  </div>
+
+		                </div>  
+	                </div>
+
+            <% end %>
+    </div>
+		  
+  </div>
+</div>
